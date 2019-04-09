@@ -26,23 +26,24 @@ output logic w
 //------------- code starts here ---------
 // instruction decoder
 logic takeBranch; // temp variable to control conditional branching
+
 always_comb
 begin
   // set default output signal values for NOP instruction
-   PCincr = 1'b1; // PC increments by default
+  PCincr = 1'b1; // PC increments by default
 	PCabsbranch = 1'b0; PCrelbranch = 1'b0;
-   ALUfunc = opcode[2:0];
-   imm=1'b0; w=1'b0;
-   takeBranch =  1'b0;
-   case(opcode)
-     `NOP: ;
-     `ADD,`SUB : begin // register-register
-	        w = 1'b1; // write result to dest register
-	      end
-     `ADDI,`SUBI: begin // register-immediate
-	        w = 1'b1; // write result to dest register
-		  imm = 1'b1; // set ctrl signal for imm operand MUX
-	      end
+  ALUfunc = opcode[2:0];
+  imm=1'b0; w=1'b0;
+  takeBranch =  1'b0;
+  case(opcode)
+    `NOP: ;
+    `ADD,`SUB : begin // register-register
+        w = 1'b1; // write result to dest register
+    end
+    `ADDI,`SUBI: begin // register-immediate
+        w = 1'b1; // write result to dest register
+    imm = 1'b1; // set ctrl signal for imm operand MUX
+    end
 
     // branches
 	`BEQ: takeBranch = flags[1]; // branch if Z==1
@@ -54,11 +55,11 @@ begin
 
   endcase // opcode
 
-   if(takeBranch) // branch condition is true;
-   begin
-      PCincr = 1'b0;
-	  PCrelbranch = 1'b1;
-   end
+  if(takeBranch) // branch condition is true;
+  begin
+    PCincr = 1'b0;
+    PCrelbranch = 1'b1;
+  end
 
 
 end // always_comb
