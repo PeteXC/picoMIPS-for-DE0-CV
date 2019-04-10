@@ -11,25 +11,25 @@
 //---------------------------------------------------------
 module decodertest;
 
-logic [5:0] opcode; // top 6 bits of instruction
-//    PC control, imm MUX control, register file control
-logic PCincr,imm,w1,w2;
-//    ALU control
+	logic [5:0] opcode; // top 6 bits of instruction
+	//    PC control, imm MUX control, register file control
+	logic PCincr,imm,w1,w2;
+	//    ALU control
 
-//------------- code starts here ---------
-// instruction decoder
-always_comb
-begin
-  // default output signal values
-   PCincr = 1'b1; // PC increments by default
-   ALUfunc = 3'b000; imm=0; w1=0; w2=0;
-  case(opcode)
-    `LDI : begin
-	          w1 = 1'b1; // dest register
-			  imm = 1'b1; // direct imm data to data_a
-	       end
+	//------------- code starts here ---------
+	// instruction decoder
+	always_comb
+	begin
+		// default output signal values
+		PCincr = 1'b1; // PC increments by default
+		ALUfunc = 3'b000; imm=0; w1=0; w2=0;
+		case(opcode)
+			`LDI : begin
+			w1 = 1'b1; // dest register
+			imm = 1'b1; // direct imm data to data_a
+		end
 
-  endcase // opcode
+	endcase // opcode
 
 
 end // always_comb
