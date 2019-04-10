@@ -20,18 +20,17 @@ module regs #(parameter n = 8) // n - data bus width
 	begin
 		if (w)
 		gpr[Raddr2] <= Wdata;
-
 	end
 
 	// read process, output 0 if %0 is selected
 	always_comb
 	begin
 		if (Raddr1==5'd0)
-		Rdata1 =  {n{1'b0}};
+			Rdata1 =  {n{1'b0}};
 		else  Rdata1 = gpr[Raddr1];
 
 		if (Raddr2==5'd0)
-		Rdata2 =  {n{1'b0}};
+			Rdata2 =  {n{1'b0}};
 		else  Rdata2 = gpr[Raddr2];
 	end
 

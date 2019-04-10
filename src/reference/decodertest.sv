@@ -25,8 +25,8 @@ module decodertest;
 		ALUfunc = 3'b000; imm=0; w1=0; w2=0;
 		case(opcode)
 			`LDI : begin
-			w1 = 1'b1; // dest register
-			imm = 1'b1; // direct imm data to data_a
+				w1 = 1'b1; // dest register
+				imm = 1'b1; // direct imm data to data_a
 		end
 
 	endcase // opcode
