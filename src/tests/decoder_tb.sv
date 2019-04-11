@@ -6,10 +6,10 @@
 // Last revised: 26 Oct 2012
 //---------------------------------------------------------
 
-`include "alucodes.sv"
-`include "opcodes.sv"
+`include "../template/alucodes.sv"
+`include "../template/opcodes.sv"
 //---------------------------------------------------------
-module decodertest;
+module decoder_tb;
 
 	logic [5:0] opcode; // top 6 bits of instruction
 	//    PC control, imm MUX control, register file control

@@ -1,4 +1,4 @@
-`include "../reference/alucodes.sv"
+`include "../template/alucodes.sv"
 module alu_tb;
 
     parameter n = 8;

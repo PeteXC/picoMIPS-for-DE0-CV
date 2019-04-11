@@ -6,7 +6,7 @@
 // Author: tjk
 // Last rev. 25 Oct 2012
 //-----------------------------------------------------
-module regstest;
+module regs_tb;
 
 	parameter n = 8;
 

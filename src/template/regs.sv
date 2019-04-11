@@ -26,12 +26,14 @@ module regs #(parameter n = 8) // n - data bus width
 	always_comb
 	begin
 		if (Raddr1==5'd0)
-			Rdata1 =  {n{1'b0}};
-		else  Rdata1 = gpr[Raddr1];
+			Rdata1 =  {n{1'b0}};	// If Raddr2 is 0, then the output is 0
+		else
+			Rdata1 = gpr[Raddr1];
 
 		if (Raddr2==5'd0)
-			Rdata2 =  {n{1'b0}};
-		else  Rdata2 = gpr[Raddr2];
+			Rdata2 =  {n{1'b0}};	// If Raddr2 is 0, then the output is 0
+		else
+			Rdata2 = gpr[Raddr2];
 	end
 
 
