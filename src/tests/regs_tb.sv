@@ -10,8 +10,8 @@ module regs_tb;
 
 	parameter n = 8;
 
-	logic clk, w1, w2;
-	logic [n-1:0] Wdata1, Wdata2;
+	logic clk, w;
+	logic [n-1:0] Wdata;
 	logic [4:0] Raddr1, Raddr2;
 	logic [n-1:0] Rdata1, Rdata2;
 
@@ -25,14 +25,14 @@ module regs_tb;
 
 	initial
 	begin
-		w1 = 1; w2 = 1;
+		w = 1;
 		Raddr1 = 1; Raddr2 = 2;
-		Wdata1 = 11; Wdata2 = 12;
+		Wdata = 11;
 
-		#12 w1 = 0; w2 = 0;
-		#10 Wdata1 = 0; Wdata2= 8'hFF;
-		#10 w1 = 1; w2 = 1;
-		#10 Raddr2 = 0; // test reg %0
+		#12ns w = 0;
+		#10ns Wdata = 8'hFF;
+		#10ns w = 1;
+		#10ns Raddr2 = 0; // test reg %0
 	end
 
 
