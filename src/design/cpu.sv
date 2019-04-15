@@ -26,12 +26,12 @@ module cpu #( parameter n = 8) // data bus width
 	wire w; // register write control
 
 	// Program Counter
-	parameter Psize = ;5 // up to 64 instructions
+	parameter Psize = 5; // up to 64 instructions
 	wire PCincr; // program counter control
 	wire [Psize-1 : 0]ProgAddress;
 
 	// ROM
-	parameter Isize = n+16; // Isize - instruction width
+	parameter Isize = n+11; // Isize - instruction width
 	wire [Isize:0] I; // I - instruction code
 
 	//------------- code starts here ---------
@@ -49,7 +49,7 @@ module cpu #( parameter n = 8) // data bus width
 		.I(I) );
 
 	decoder DCR0 (
-		.opcode(I[Isize-1:Isize-6]),
+		.opcode(I[Isize:Isize-2]),
 		.PCincr(PCincr),
 		.ALUfunc(ALUfunc),
 		.imm(imm),
@@ -60,8 +60,8 @@ module cpu #( parameter n = 8) // data bus width
 		.clk(clk),
 		.w(w),
 		.Wdata(Wdata),
-		.Raddr2(I[Isize-7:Isize-11]),  // reg %d number
-		.Raddr1(I[Isize-12:Isize-16]), // reg %s number
+		.Raddr2(I[Isize-3:Isize-6]),  // reg %d number
+		.Raddr1(I[Isize-7:Isize-10]), // reg %s number
 		.Rdata1(Rdata1),
 		.Rdata2(Rdata2) );
 

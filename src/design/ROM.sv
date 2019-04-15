@@ -4,7 +4,7 @@
 // Author: tjk,
 // Last rev. 24 Oct 2012
 //-----------------------------------------------------
-module ROM #(parameter Psize = 5, Isize = 24) // psize - address width, Isize - instruction width
+module ROM #(parameter Psize = 5, Isize = 19) // psize - address width, Isize - instruction width
 	(input logic [Psize-1:0] address,
 	output logic [Isize:0] I); // I - instruction code
 

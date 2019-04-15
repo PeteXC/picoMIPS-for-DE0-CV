@@ -8,7 +8,7 @@
 module registers #(parameter n = 8) // n - data bus width
 	(input logic clk, w, // clk and write control
 	input logic [n-1:0] Wdata,
-	input logic [4:0] Raddr1, Raddr2,
+	input logic [3:0] Raddr1, Raddr2,
 	output logic [n-1:0] Rdata1, Rdata2);
 
 	// Declare 16 n-bit registers

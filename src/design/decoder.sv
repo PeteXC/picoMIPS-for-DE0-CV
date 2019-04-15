@@ -11,7 +11,7 @@
 //---------------------------------------------------------
 module decoder(
 	input wire loadSwitch,
-	input logic [5:0] opcode, // top 6 bits of instruction
+	input logic [2:0] opcode, // top 6 bits of instruction
 	// output signals
 	//    PC control
 	output logic PCincr,
@@ -73,11 +73,11 @@ module decoder(
 			end
 
 			`WAIT0: begin
-				PCincr = ~inSwitch;
+				PCincr = ~loadSwitch;
 			end
 
 			`WAIT1: begin
-				PCincr = inSwitch;
+				PCincr = loadSwitch;
 			end
 			default:
 				$error("unimplemented opcode %h",opcode);
