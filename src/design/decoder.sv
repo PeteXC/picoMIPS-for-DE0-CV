@@ -10,63 +10,79 @@
 `include "opcodes.sv"
 //---------------------------------------------------------
 module decoder(
+	input wire loadSwitch,
 	input logic [5:0] opcode, // top 6 bits of instruction
-	input [3:0] flags, // ALU flags
 	// output signals
 	//    PC control
-	output logic PCincr,PCabsbranch,PCrelbranch,
+	output logic PCincr,
 	//    ALU control
 	output logic [2:0] ALUfunc,
 	// imm mux control
-	output logic imm,
+	output logic imm, inSwitch,
 	//   register file control
 	output logic w
 	);
 
 	//------------- code starts here ---------
 	// instruction decoder
-	logic takeBranch; // temp variable to control conditional branching
 
 	always_comb
 	begin
 		// set default output signal values for NOP instruction
 		PCincr = 1'b1; // PC increments by default
-		PCabsbranch = 1'b0; PCrelbranch = 1'b0;
-		ALUfunc = opcode[2:0];
+		ALUfunc = 3'`RA;
 		imm=1'b0; w=1'b0;
 		takeBranch =  1'b0;
 
 		case(opcode)
-			`NOP: ;
 
-			`ADD,`SUB : begin // register-register
-			w = 1'b1; // write result to dest register
+			`LDI: begin
+				ALUfunc = `RB;
+				imm = 1'b1;
+				w = 1'b1;
 			end
 
-			`ADDI,`SUBI: begin // register-immediate
-			w = 1'b1; // write result to dest register
-			imm = 1'b1; // set ctrl signal for imm operand MUX
+			`LDS: begin
+				PCincr = loadSwitch;
+				w = 1'b1;
+				ALUfunc = `RB;
+				imm = 1'b1;
+				inSwitch = 1'b1;
 			end
 
-			// branches
-			`BEQ: takeBranch = flags[1]; // branch if Z==1
+			`ADD: begin // register-register
+				w = 1'b1; // write result to dest register
+				ALUfunc = `RADD;
+			end
 
-			`BNE: takeBranch = ~flags[1]; // branch if Z==0
+			`ADDI: begin
+				w = 1'b1;
+				imm = 1'b1;
+				ALUfunc = `RADD;
+			end
 
-			`BGE: takeBranch = ~flags[2]; // branch if N==0
+			`MUL: begin // register-immediate
+				w = 1'b1; // write result to dest register
+				ALUfunc = `RMUL;
+			end
 
-			`BLO: takeBranch = flags[0]; // branch if C==1
+			`MULI: begin // register-immediate
+				w = 1'b1; // write result to dest register
+				imm = 1'b1;
+				ALUfunc = `RMUL;
+			end
 
+			`WAIT0: begin
+				PCincr = ~inSwitch;
+			end
+
+			`WAIT1: begin
+				PCincr = inSwitch;
+			end
 			default:
 				$error("unimplemented opcode %h",opcode);
 
 		endcase // opcode
-
-		if(takeBranch) // branch condition is true;
-		begin
-			PCincr = 1'b0;
-			PCrelbranch = 1'b1;
-		end
 
 	end // always_comb
 
