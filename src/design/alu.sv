@@ -33,7 +33,7 @@ module alu #(parameter n =8) (
 	assign ar = a + b;
 
 	 // Generic 8-to-16-bit signed multiplier
-    logic signed [((2*N)-1):0] mr;
+    logic signed [((2*n)-1):0] mr;
     assign mr = a * b;
 
 	// create the ALU, use signal ar in arithmetic operations
