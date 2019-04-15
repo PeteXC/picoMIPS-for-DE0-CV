@@ -56,9 +56,4 @@ module decoder_tb;
 
 	end
 
-
-
-end // always_comb
-
-
 endmodule //module decoder --------------------------------

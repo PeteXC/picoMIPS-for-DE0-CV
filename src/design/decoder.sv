@@ -30,9 +30,8 @@ module decoder(
 	begin
 		// set default output signal values for NOP instruction
 		PCincr = 1'b1; // PC increments by default
-		ALUfunc = 3'`RA;
+		ALUfunc = `RA;
 		imm=1'b0; w=1'b0;
-		takeBranch =  1'b0;
 
 		case(opcode)
 
@@ -79,6 +78,7 @@ module decoder(
 			`WAIT1: begin
 				PCincr = loadSwitch;
 			end
+
 			default:
 				$error("unimplemented opcode %h",opcode);
 
