@@ -5,14 +5,14 @@
 // Author: tjk
 // Last rev. 27 Oct 2012
 //-----------------------------------------------------
-module regs #(parameter n = 8) // n - data bus width
+module registers #(parameter n = 8) // n - data bus width
 	(input logic clk, w, // clk and write control
 	input logic [n-1:0] Wdata,
 	input logic [4:0] Raddr1, Raddr2,
 	output logic [n-1:0] Rdata1, Rdata2);
 
-	// Declare 32 n-bit registers
-	logic [n-1:0] gpr [31:0];
+	// Declare 16 n-bit registers
+	logic [n-1:0] gpr [16:0];
 
 
 	// write process, dest reg is Raddr2
