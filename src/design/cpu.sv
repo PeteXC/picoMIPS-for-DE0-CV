@@ -60,8 +60,8 @@ module cpu #( parameter n = 8) // data bus width
 		.clk(clk),
 		.w(w),
 		.Wdata(Wdata),
-		.srcAddr(I[Isize-3:Isize-6]),  // reg %d number
-		.dstAddr(I[Isize-7:Isize-10]), // reg %s number
+		.srcAddr(I[Isize-7:Isize-10]),  // reg %d number
+		.dstAddr(I[Isize-3:Isize-6]), // reg %s number
 		.srcData(Rdata1),
 		.dstData(Rdata2) );
 
