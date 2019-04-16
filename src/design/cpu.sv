@@ -11,6 +11,8 @@ module cpu #( parameter n = 8) // data bus width
 	(
 	input wire clk,
 	input wire reset, // master reset
+	input wire loadSwitch,
+	input wire [n-1:0] dataSwitch,
 	output logic[n-1:0] outport // need an output port, tentatively this will be the ALU output
 	);
 
@@ -31,7 +33,7 @@ module cpu #( parameter n = 8) // data bus width
 	wire [Psize-1 : 0]ProgAddress;
 
 	// ROM
-	parameter Isize = n+11; // Isize - instruction width
+	parameter Isize = n+10; // Isize - instruction width
 	wire [Isize:0] I; // I - instruction code
 
 	//------------- code starts here ---------
@@ -49,11 +51,13 @@ module cpu #( parameter n = 8) // data bus width
 		.I(I) );
 
 	decoder DCR0 (
+		.loadSwitch(loadSwitch),
 		.opcode(I[Isize:Isize-2]),
 		.PCincr(PCincr),
 		.ALUfunc(ALUfunc),
 		.imm(imm),
-		.w(w) );
+		.w(w),
+		.inSwitch(inSwitch) );
 
 	registers   #(.n(n))
 		GPR0 (
@@ -69,11 +73,11 @@ module cpu #( parameter n = 8) // data bus width
 		ALU0 (
 		.a(Rdata1),
 		.b(Alub),
-		.func(ALUfunc),.flags(flags),
+		.func(ALUfunc),
 		.result(Wdata) ); // ALU result -> destination reg
 
 	// create MUX for immediate operand
-	assign Alub = (imm ? I[n-1:0] : Rdata2);
+	assign Alub = (inSwitch ? dataSwitch : (imm ? I[n-1:0] : Rdata2));
 	// this will take the lowest 8 bits of the instruction bus i.e. take the second operand as is
 
 

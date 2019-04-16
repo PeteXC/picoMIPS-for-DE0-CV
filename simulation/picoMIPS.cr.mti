@@ -1,23 +1,16 @@
-C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/tests/pc_tb.sv {1 {vlog -work work -sv -stats=none C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/tests/pc_tb.sv
-Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
--- Compiling module pc_tb
-
-Top level modules:
-	pc_tb
-
-} {} {}} C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/alu.sv {1 {vlog -work work -sv -stats=none C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/alu.sv
-Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
--- Compiling module alu
-
-Top level modules:
-	alu
-
-} {} {}} C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/decoder.sv {1 {vlog -work work -sv -stats=none C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/decoder.sv
+C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/decoder.sv {1 {vlog -work work -sv -stats=none C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/decoder.sv
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
 -- Compiling module decoder
 
 Top level modules:
 	decoder
+
+} {} {}} C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/tests/cpu_tb.sv {1 {vlog -work work -sv -stats=none C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/tests/cpu_tb.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module cpu_tb
+
+Top level modules:
+	cpu_tb
 
 } {} {}} C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/tests/registers_tb.sv {1 {vlog -work work -sv -stats=none C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/tests/registers_tb.sv
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
@@ -26,6 +19,20 @@ Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  
 Top level modules:
 	registers_tb
 
+} {} {}} C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/alu.sv {1 {vlog -work work -sv -stats=none C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/alu.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module alu
+
+Top level modules:
+	alu
+
+} {} {}} C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/tests/pc_tb.sv {1 {vlog -work work -sv -stats=none C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/tests/pc_tb.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module pc_tb
+
+Top level modules:
+	pc_tb
+
 } {} {}} C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/pc.sv {1 {vlog -work work -sv -stats=none C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/pc.sv
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
 -- Compiling module pc
@@ -33,19 +40,26 @@ Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  
 Top level modules:
 	pc
 
-} {} {}} C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/registers.sv {1 {vlog -work work -sv -stats=none C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/registers.sv
+} {} {}} C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/tests/decoder_tb.sv {1 {vlog -work work -sv -stats=none C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/tests/decoder_tb.sv
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
--- Compiling module registers
+-- Compiling module decoder_tb
 
 Top level modules:
-	registers
+	decoder_tb
 
-} {} {}} C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/tests/ROM_tb.sv {1 {vlog -work work -sv -stats=none C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/tests/ROM_tb.sv
+} {} {}} C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/ROM.sv {1 {vlog -work work -sv -stats=none C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/ROM.sv
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
--- Compiling module ROM_tb
+-- Compiling module ROM
 
 Top level modules:
-	ROM_tb
+	ROM
+
+} {} {}} C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/cpu.sv {1 {vlog -work work -sv -stats=none C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/cpu.sv
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module cpu
+
+Top level modules:
+	cpu
 
 } {} {}} C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/tests/alu_tb.sv {1 {vlog -work work -sv -stats=none C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/tests/alu_tb.sv
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
@@ -54,11 +68,11 @@ Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  
 Top level modules:
 	alu_tb
 
-} {} {}} C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/tests/decoder_tb.sv {1 {vlog -work work -sv -stats=none C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/tests/decoder_tb.sv
+} {} {}} C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/tests/ROM_tb.sv {1 {vlog -work work -sv -stats=none C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/tests/ROM_tb.sv
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
--- Compiling module decoder_tb
+-- Compiling module ROM_tb
 
 Top level modules:
-	decoder_tb
+	ROM_tb
 
 } {} {}}

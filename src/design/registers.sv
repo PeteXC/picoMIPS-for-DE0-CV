@@ -23,18 +23,20 @@ module registers #(parameter n = 8) // n - data bus width
 	end
 
 	// read process, output 0 if %0 is selected
-	always_comb
-	begin
-		if (srcAddr==4'd0)
-			srcData =  {n{1'b0}};	// If Raddr2 is 0, then the output is 0
-		else
-			srcData = gpr[srcAddr];
+	// always_comb
+	// begin
+	// 	if (srcAddr==4'd0)
+	// 		srcData =  {n{1'b0}};	// If Raddr2 is 0, then the output is 0
+	// 	else
+	// 		srcData = gpr[srcAddr];
 
-		if (dstAddr==4'd0)
-			dstData =  {n{1'b0}};	// If Raddr2 is 0, then the output is 0
-		else
-			dstData = gpr[dstAddr];
-	end
+	// 	if (dstAddr==4'd0)
+	// 		dstData =  {n{1'b0}};	// If Raddr2 is 0, then the output is 0
+	// 	else
+	// 		dstData = gpr[dstAddr];
+	// end
 
+	assign srcData = gpr[srcAddr];
+	assign dstData = gpr[dstAddr];
 
 endmodule // module regs

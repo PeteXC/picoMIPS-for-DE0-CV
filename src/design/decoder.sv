@@ -11,7 +11,7 @@
 //---------------------------------------------------------
 module decoder(
 	input wire loadSwitch,
-	input logic [2:0] opcode, // top 6 bits of instruction
+	input wire [2:0] opcode, // top 3 bits of instruction
 	// output signals
 	//    PC control
 	output logic PCincr,
@@ -31,7 +31,7 @@ module decoder(
 		// set default output signal values for NOP instruction
 		PCincr = 1'b1; // PC increments by default
 		ALUfunc = `RA;
-		imm=1'b0; w=1'b0;
+		imm=1'b0; w=1'b0; inSwitch=1'b0;
 
 		case(opcode)
 
