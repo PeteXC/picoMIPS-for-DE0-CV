@@ -60,10 +60,10 @@ module cpu #( parameter n = 8) // data bus width
 		.clk(clk),
 		.w(w),
 		.Wdata(Wdata),
-		.Raddr2(I[Isize-3:Isize-6]),  // reg %d number
-		.Raddr1(I[Isize-7:Isize-10]), // reg %s number
-		.Rdata1(Rdata1),
-		.Rdata2(Rdata2) );
+		.srcAddr(I[Isize-3:Isize-6]),  // reg %d number
+		.dstAddr(I[Isize-7:Isize-10]), // reg %s number
+		.srcData(Rdata1),
+		.dstData(Rdata2) );
 
 	alu    #(.n(n))
 		ALU0 (

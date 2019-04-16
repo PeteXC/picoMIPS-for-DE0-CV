@@ -1,6 +1,6 @@
 //-----------------------------------------------------
-// File Name : regs.sv
-// Function : picoMIPS 32 x n registers, %0 == 0
+// File Name : registers.sv
+// Function : picoMIPS 16 x n registers, %0 == 0
 // Version 1 :
 // Author: tjk
 // Last rev. 27 Oct 2012
@@ -8,32 +8,32 @@
 module registers #(parameter n = 8) // n - data bus width
 	(input logic clk, w, // clk and write control
 	input logic [n-1:0] Wdata,
-	input logic [3:0] Raddr1, Raddr2,
-	output logic [n-1:0] Rdata1, Rdata2);
+	input logic [3:0] srcAddr, dstAddr,
+	output logic [n-1:0] srcData, dstData);
 
 	// Declare 16 n-bit registers
 	logic [n-1:0] gpr [16:0];
 
 
-	// write process, dest reg is Raddr2
+	// write process, dst reg is Raddr2
 	always_ff @ (posedge clk)
 	begin
 		if (w)
-		gpr[Raddr2] <= Wdata;
+			gpr[dstAddr] <= Wdata;
 	end
 
 	// read process, output 0 if %0 is selected
 	always_comb
 	begin
-		if (Raddr1==5'd0)
-			Rdata1 =  {n{1'b0}};	// If Raddr2 is 0, then the output is 0
+		if (srcAddr==4'd0)
+			srcData =  {n{1'b0}};	// If Raddr2 is 0, then the output is 0
 		else
-			Rdata1 = gpr[Raddr1];
+			srcData = gpr[srcAddr];
 
-		if (Raddr2==5'd0)
-			Rdata2 =  {n{1'b0}};	// If Raddr2 is 0, then the output is 0
+		if (dstAddr==4'd0)
+			dstData =  {n{1'b0}};	// If Raddr2 is 0, then the output is 0
 		else
-			Rdata2 = gpr[Raddr2];
+			dstData = gpr[dstAddr];
 	end
 
 
