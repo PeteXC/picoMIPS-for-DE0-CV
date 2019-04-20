@@ -20,7 +20,9 @@ module decoder(
 	// imm mux control
 	output logic imm, inSwitch,
 	//   register file control
-	output logic w
+	output logic w,
+	//	1 for dst-src1-src2, 0 for dst-src
+	output logic opType
 	);
 
 	//------------- code starts here ---------
@@ -32,6 +34,7 @@ module decoder(
 		PCincr = 1'b1; // PC increments by default
 		ALUfunc = `RA;
 		imm=1'b0; w=1'b0; inSwitch=1'b0;
+		opType = 0;
 
 		case(opcode)
 
@@ -39,6 +42,7 @@ module decoder(
 				ALUfunc = `RB;
 				imm = 1'b1;
 				w = 1'b1;
+				opType = 0;
 			end
 
 			`LDS: begin
@@ -47,17 +51,20 @@ module decoder(
 				ALUfunc = `RB;
 				imm = 1'b1;
 				inSwitch = 1'b1;
+				opType = 0;
 			end
 
 			`ADD: begin // register-register
 				w = 1'b1; // write result to dest register
 				ALUfunc = `RADD;
+				opType = 1;
 			end
 
 			`ADDI: begin
 				w = 1'b1;
 				imm = 1'b1;
 				ALUfunc = `RADD;
+				opType = 0;
 			end
 
 			`MUL: begin // register-immediate

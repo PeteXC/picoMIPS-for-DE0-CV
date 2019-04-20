@@ -1,10 +1,10 @@
-C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/tests/registers_tb.sv {2 {vlog -work work -sv -stats=none C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/tests/registers_tb.sv
+C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/tests/pc_tb.sv {2 {vlog -work work -sv -stats=none C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/tests/pc_tb.sv
 ** Warning: (vlog-14) Failed to open "C:/Users/Peter/Home/Projects/SV/EP-cwk/simulation/picoMIPS.mpf" specified by the MODELSIM environment variable.
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
--- Compiling module registers_tb
+-- Compiling module pc_tb
 
 Top level modules:
-	registers_tb
+	pc_tb
 
 } {} {}} C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/alu.sv {2 {vlog -work work -sv -stats=none C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/alu.sv
 ** Warning: (vlog-14) Failed to open "C:/Users/Peter/Home/Projects/SV/EP-cwk/simulation/picoMIPS.mpf" specified by the MODELSIM environment variable.
@@ -14,29 +14,13 @@ Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  
 Top level modules:
 	alu
 
-} {} {}} C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/tests/pc_tb.sv {2 {vlog -work work -sv -stats=none C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/tests/pc_tb.sv
+} {} {}} C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/tests/registers_tb.sv {2 {vlog -work work -sv -stats=none C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/tests/registers_tb.sv
 ** Warning: (vlog-14) Failed to open "C:/Users/Peter/Home/Projects/SV/EP-cwk/simulation/picoMIPS.mpf" specified by the MODELSIM environment variable.
 Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
--- Compiling module pc_tb
+-- Compiling module registers_tb
 
 Top level modules:
-	pc_tb
-
-} {} {}} C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/pc.sv {2 {vlog -work work -sv -stats=none C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/pc.sv
-** Warning: (vlog-14) Failed to open "C:/Users/Peter/Home/Projects/SV/EP-cwk/simulation/picoMIPS.mpf" specified by the MODELSIM environment variable.
-Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
--- Compiling module pc
-
-Top level modules:
-	pc
-
-} {} {}} C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/tests/decoder_tb.sv {2 {vlog -work work -sv -stats=none C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/tests/decoder_tb.sv
-** Warning: (vlog-14) Failed to open "C:/Users/Peter/Home/Projects/SV/EP-cwk/simulation/picoMIPS.mpf" specified by the MODELSIM environment variable.
-Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
--- Compiling module decoder_tb
-
-Top level modules:
-	decoder_tb
+	registers_tb
 
 } {} {}} C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/tests/alu_tb.sv {2 {vlog -work work -sv -stats=none C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/tests/alu_tb.sv
 ** Warning: (vlog-14) Failed to open "C:/Users/Peter/Home/Projects/SV/EP-cwk/simulation/picoMIPS.mpf" specified by the MODELSIM environment variable.
@@ -45,5 +29,13 @@ Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  
 
 Top level modules:
 	alu_tb
+
+} {} {}} C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/tests/decoder_tb.sv {2 {vlog -work work -sv -stats=none C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/tests/decoder_tb.sv
+** Warning: (vlog-14) Failed to open "C:/Users/Peter/Home/Projects/SV/EP-cwk/simulation/picoMIPS.mpf" specified by the MODELSIM environment variable.
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module decoder_tb
+
+Top level modules:
+	decoder_tb
 
 } {} {}}

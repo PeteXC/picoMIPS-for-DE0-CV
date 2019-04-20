@@ -36,6 +36,9 @@ module cpu #( parameter n = 8) // data bus width
 	parameter Isize = n+10; // Isize - instruction width
 	wire [Isize:0] I; // I - instruction code
 
+	// Decorder
+	wire opType;
+
 	//------------- code starts here ---------
 	// module instantiations
 	pc  #(.Psize(Psize))
@@ -57,7 +60,8 @@ module cpu #( parameter n = 8) // data bus width
 		.ALUfunc(ALUfunc),
 		.imm(imm),
 		.w(w),
-		.inSwitch(inSwitch) );
+		.inSwitch(inSwitch)
+		.opType(opType) );
 
 	registers   #(.n(n))
 		GPR0 (
@@ -77,7 +81,7 @@ module cpu #( parameter n = 8) // data bus width
 		.result(Wdata) ); // ALU result -> destination reg
 
 	// create MUX for immediate operand
-	assign Alub = (inSwitch ? dataSwitch : (imm ? I[n-1:0] : Rdata2));
+	assign Alub = (inSwitch ? dataSwitch : (opType ? I[n-5:0] : (imm ? I[n-1:0] : Rdata2)));
 	// this will take the lowest 8 bits of the instruction bus i.e. take the second operand as is
 
 
