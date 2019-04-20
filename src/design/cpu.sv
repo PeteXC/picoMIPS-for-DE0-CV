@@ -21,10 +21,10 @@ module cpu #( parameter n = 8) // data bus width
 	// ALU
 	wire [2:0] ALUfunc; // ALU function
 	wire imm; // immediate operand signal
-	wire [n-1:0] Alub; // output from imm MUX
+	wire [n-1:0] AluB, AluA; // output from imm MUX
 
 	// registers
-	wire [n-1:0] Rdata1, Rdata2, Wdata; // Register data
+	wire [n-1:0] Rdata1, Rdata2, Rdata3, Wdata; // Register data
 	wire w; // register write control
 
 	// Program Counter
@@ -33,11 +33,11 @@ module cpu #( parameter n = 8) // data bus width
 	wire [Psize-1 : 0]ProgAddress;
 
 	// ROM
-	parameter Isize = n+10; // Isize - instruction width
+	parameter Isize = n+6; // Isize - instruction width
 	wire [Isize:0] I; // I - instruction code
 
 	// Decorder
-	wire opType;
+	// wire opType;
 
 	//------------- code starts here ---------
 	// module instantiations
@@ -60,28 +60,31 @@ module cpu #( parameter n = 8) // data bus width
 		.ALUfunc(ALUfunc),
 		.imm(imm),
 		.w(w),
-		.inSwitch(inSwitch)
-		.opType(opType) );
+		.inSwitch(inSwitch) );
 
 	registers   #(.n(n))
 		GPR0 (
 		.clk(clk),
 		.w(w),
 		.Wdata(Wdata),
-		.srcAddr(I[Isize-7:Isize-10]),  // reg %d number
+		.srcAddr1(I[Isize-7:Isize-10]),  // reg %d number
+		.srcAddr2(I[Isize-11:0]),
 		.dstAddr(I[Isize-3:Isize-6]), // reg %s number
-		.srcData(Rdata1),
-		.dstData(Rdata2) );
+		.srcData1(Rdata1),
+		.srcData2(Rdata2),
+		.dstData(Rdata3) );
 
 	alu    #(.n(n))
 		ALU0 (
-		.a(Rdata1),
-		.b(Alub),
+		.a(AluA),
+		.b(AluB),
 		.func(ALUfunc),
 		.result(Wdata) ); // ALU result -> destination reg
 
 	// create MUX for immediate operand
-	assign Alub = (inSwitch ? dataSwitch : (opType ? I[n-5:0] : (imm ? I[n-1:0] : Rdata2)));
+	assign AluB = (inSwitch ? dataSwitch : (imm ? I[n-1:0] : Rdata2));
+
+	assign AluA = (imm ? Rdata3 : Rdata1);
 	// this will take the lowest 8 bits of the instruction bus i.e. take the second operand as is
 
 

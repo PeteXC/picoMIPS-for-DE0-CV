@@ -30,6 +30,11 @@ module alu_tb;
         b = 3;
         func = `RMUL;
 
+        #20ns
+        a = 9;
+        b = 9;
+        func = `RMUL;
+
     end
 
 endmodule

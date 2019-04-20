@@ -8,11 +8,11 @@
 module registers #(parameter n = 8) // n - data bus width
 	(input logic clk, w, // clk and write control
 	input logic [n-1:0] Wdata,
-	input logic [3:0] srcAddr, dstAddr,
-	output logic [n-1:0] srcData, dstData);
+	input logic [3:0] srcAddr1, srcAddr2, dstAddr,
+	output logic [n-1:0] srcData1, srcData2, dstData);
 
 	// Declare 16 n-bit registers
-	logic [n-1:0] gpr [16:0];
+	logic [n-1:0] gpr [15:0];
 
 
 	// write process, dst reg is Raddr2
@@ -36,7 +36,8 @@ module registers #(parameter n = 8) // n - data bus width
 	// 		dstData = gpr[dstAddr];
 	// end
 
-	assign srcData = gpr[srcAddr];
+	assign srcData1 = gpr[srcAddr1];
+	assign srcData2 = gpr[srcAddr2];
 	assign dstData = gpr[dstAddr];
 
 endmodule // module regs
