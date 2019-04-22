@@ -81,13 +81,13 @@ module decoder(
 			end
 
 			`WAIT0: begin
-				w = 1'b1;
+				w = 1'b0;
 				inSwitch = 1'b1;
 				PCincr = ~loadSwitch;
 			end
 
 			`WAIT1: begin
-				w = 1'b1;
+				w = 1'b0;
 				inSwitch = 1'b1;
 				PCincr = loadSwitch;
 			end

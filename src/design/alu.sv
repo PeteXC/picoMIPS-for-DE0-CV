@@ -58,7 +58,7 @@ module alu #(parameter n =8) (
 			end
 
 			`RMUL	: begin
-				result = mr;
+				result = mr[((n*2)-2):(n-1)];
 			end
 
 		endcase
