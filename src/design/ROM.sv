@@ -10,7 +10,8 @@ module ROM #(parameter Psize = 5, Isize = 14) // psize - address width, Isize - 
 
 	// program memory declaration, note: 1<<n is same as 2^n
 //	logic [Isize:0] memory[ (1<<Psize)-1:0];
-	logic [Isize:0] memory[17:0];
+	// Program memory - only have as many as needed
+	logic [Isize:0] memory [17:0];
 
 	// get memory contents from file
 	initial begin

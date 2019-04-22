@@ -32,10 +32,8 @@ module alu #(parameter n =8) (
 
 	assign ar = a + b;
 
-	// Generic 8-to-16-bit signed multiplier
-	// logic signed [((2*n)-1):0] mr;
+	// Create 8-to-16-bit signed multiplier
 	wire [((2*n)-1):0] mr;
-	// assign mr = a * b;
 	signed_mult MUL0 (
 		.a(a),
 		.b(b),
@@ -58,7 +56,7 @@ module alu #(parameter n =8) (
 			end
 
 			`RMUL	: begin
-				result = mr[((n*2)-2):(n-1)];
+				result = mr[((n-1)*2):(n-1)];
 			end
 
 			default	: result = a;
