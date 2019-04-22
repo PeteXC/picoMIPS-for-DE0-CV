@@ -1,8 +1,9 @@
 // synthesise to run on Altera DE0 for testing and demo
 module picoMIPS4test(
-	input logic fastclk,  // 50MHz Altera DE0 clock
-	input logic [9:0] SW, // Switches SW0..SW9
-	output logic [7:0] LED); // LEDs
+	input wire fastclk,  // 50MHz Altera DE0 clock
+	input wire reset,
+	input wire [8:0] SW, // Switches SW0..SW7 and one for load
+	output logic [7:0] LEDR); // LEDs
 
 	logic clk; // slow clock, about 10Hz
 
@@ -11,6 +12,6 @@ module picoMIPS4test(
 	// to obtain the cost figure, synthesise your design without the counter
 	// and the picoMIPS4test module using Cyclone IV E as target
 	// and make a note of the synthesis statistics
-	picoMIPS myDesign (.clk(clk), .SW(SW),.LED(LED));
+	cpu #(.n(8)) CPU01 (.clk(clk), .reset(reset), .loadSwitch(SW[8]), .dataSwitch(SW[7:0]), .outport(LEDR));
 
 endmodule

@@ -41,6 +41,9 @@ module affine_tb;
         #20
         loadSwitch = 0;
 
+        #400
+        loadSwitch = 1;
+
     end
 
 endmodule
