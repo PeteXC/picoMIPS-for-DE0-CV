@@ -24,7 +24,7 @@ module cpu #( parameter n = 8) // data bus width
 	wire [n-1:0] AluB, AluA; // output from imm MUX
 
 	// registers
-	wire [n-1:0] Rdata1, Rdata2, Rdata3, Wdata; // Register data
+	wire [n-1:0] Rdata1, Rdata2, Rdata3, Wdata, outX2, outY2; // Register data
 	wire w; // register write control
 
 	// Program Counter
@@ -36,8 +36,8 @@ module cpu #( parameter n = 8) // data bus width
 	parameter Isize = n+6; // Isize - instruction width
 	wire [Isize:0] I; // I - instruction code
 
-	// Decorder
-	// wire opType;
+	// Decoder
+	wire dispX2, dispY2, inSwitch;
 
 	//------------- code starts here ---------
 	// module instantiations
@@ -60,7 +60,9 @@ module cpu #( parameter n = 8) // data bus width
 		.ALUfunc(ALUfunc),
 		.imm(imm),
 		.w(w),
-		.inSwitch(inSwitch) );
+		.inSwitch(inSwitch),
+		.dispX2(dispX2),
+		.dispY2(dispY2) );
 
 	registers   #(.n(n))
 		GPR0 (
@@ -72,7 +74,9 @@ module cpu #( parameter n = 8) // data bus width
 		.dstAddr(I[Isize-3:Isize-6]), // reg %s number
 		.srcData1(Rdata1),
 		.srcData2(Rdata2),
-		.dstData(Rdata3) );
+		.dstData(Rdata3),
+		.outX2(outX2),
+		.outY2(outY2) );
 
 	alu    #(.n(n))
 		ALU0 (
@@ -88,7 +92,19 @@ module cpu #( parameter n = 8) // data bus width
 	// this will take the lowest 8 bits of the instruction bus i.e. take the second operand as is
 
 
-	// connect ALU result to outport
-	assign outport = Wdata;
+	// connect answer result registers to outport
+	// assign outport = (dispX2 ? ());
+
+	always_comb begin
+		if (dispX2 == 1) begin
+			outport = outX2;
+		end
+		else if (dispY2 == 1) begin
+			outport = outY2;
+		end
+		else begin
+			outport = 8'bxxxxxxxx;
+		end
+	end
 
 endmodule
