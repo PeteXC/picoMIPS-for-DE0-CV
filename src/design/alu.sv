@@ -13,8 +13,8 @@
 
 `include "alucodes.sv"
 module alu #(parameter n =8) (
-	input logic [n-1:0] a, b, // ALU operands
-	input logic [2:0] func, // ALU function code
+	input wire signed [n-1:0] a, b, // ALU operands
+	input wire [2:0] func, // ALU function code
 	output logic [n-1:0] result // ALU result
 	);
 	//------------- code starts here ---------
@@ -32,9 +32,15 @@ module alu #(parameter n =8) (
 
 	assign ar = a + b;
 
-	 // Generic 8-to-16-bit signed multiplier
-    logic signed [((2*n)-1):0] mr;
-    assign mr = a * b;
+	// Generic 8-to-16-bit signed multiplier
+	// logic signed [((2*n)-1):0] mr;
+	wire [((2*n)-1):0] mr;
+	// assign mr = a * b;
+	signed_mult MUL0 (
+		.a(a),
+		.b(b),
+		.out(mr) );
+
 
 	// create the ALU, use signal ar in arithmetic operations
 	always_comb
@@ -52,7 +58,7 @@ module alu #(parameter n =8) (
 			end
 
 			`RMUL	: begin
-				result = mr;
+				result = mr[((n*2)-2):(n-1)];
 			end
 
 		endcase
