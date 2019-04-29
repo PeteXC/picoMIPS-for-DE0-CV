@@ -1,11 +1,3 @@
-//------------------------------------
-// File Name   : cpu.sv
-// Function    : picoMIPS CPU top level encapsulating module, version 2
-// Author      : tjk
-// Ver 2 :  PC , prog memory, regs, ALU and decoder, no RAM
-// Last revised: 27 Oct 2012
-//------------------------------------
-
 `include "alucodes.sv"
 module cpu #( parameter n = 8) // data bus width
 	(

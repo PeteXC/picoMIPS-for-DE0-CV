@@ -1,16 +1,3 @@
-//-----------------------------------------------------
-// File Name   : alu.sv
-// Function    : ALU module for picoMIPS
-// Version: 1,  only 8 funcs
-// Author:  tjk
-// Last rev. 23 Oct 12
-//-----------------------------------------------------
-
-// V = flags[3] = overflow
-// N = flags[2] = negative
-// Z = flags[1] = zero
-// C = flags[0] = carry on msb
-
 `include "alucodes.sv"
 module alu #(parameter n =8) (
 	input wire signed [n-1:0] a, b, // ALU operands
@@ -22,13 +9,6 @@ module alu #(parameter n =8) (
 	// create an n-bit adder
 	// and then build the ALU around the adder
 	logic[n-1:0] ar,b1; // temp signals
-
-	// always_comb
-	// begin
-	// 	if(func==`RSUB)
-	// 		b1 = b;
-	// 		ar = a+b1; // n-bit adder
-	// end // always_comb
 
 	assign ar = a + b;
 

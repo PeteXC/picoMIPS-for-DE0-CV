@@ -1,11 +1,3 @@
-//---------------------------------------------------------
-// File Name   : decoder.sv
-// Function    : picoMIPS instruction decoder
-// Author: tjk
-// ver 2:  // NOP, ADD, ADDI, and branches
-// Last revised: 26 Oct 2012
-//---------------------------------------------------------
-
 `include "alucodes.sv"
 `include "opcodes.sv"
 //---------------------------------------------------------

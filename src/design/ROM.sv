@@ -1,9 +1,3 @@
-//-----------------------------------------------------
-// File Name : prog.sv
-// Function : Program memory Psize x Isize - reads from file prog.hex
-// Author: tjk,
-// Last rev. 24 Oct 2012
-//-----------------------------------------------------
 module ROM #(parameter Psize = 5, Isize = 14) // psize - address width, Isize - instruction width
 	(input wire [Psize-1:0] address,
 	output logic [Isize:0] I); // I - instruction code
