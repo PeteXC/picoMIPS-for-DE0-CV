@@ -36,15 +36,11 @@
 					"strict" : false
 				},
 				{
+					"name" : "LEDR[8]",
+					"strict" : false
+				},
+				{
 					"name" : "SW[0]",
-					"strict" : false
-				},
-				{
-					"name" : "reset",
-					"strict" : false
-				},
-				{
-					"name" : "SW[8]",
 					"strict" : false
 				},
 				{
@@ -77,6 +73,14 @@
 				},
 				{
 					"name" : "fastclk",
+					"strict" : false
+				},
+				{
+					"name" : "reset",
+					"strict" : false
+				},
+				{
+					"name" : "SW[8]",
 					"strict" : false
 				}
 			]

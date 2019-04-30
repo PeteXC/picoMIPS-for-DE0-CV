@@ -1,16 +1,8 @@
-//---------------------------------------------------------
-// File Name   : decoder.sv
-// Function    : picoMIPS instruction decoder
-// Author: tjk
-// ver 2:  // NOP, ADD, ADDI, and branches
-// Last revised: 26 Oct 2012
-//---------------------------------------------------------
-
 `include "alucodes.sv"
 `include "opcodes.sv"
 //---------------------------------------------------------
 module decoder(
-	input wire loadSwitch,
+	input wire loadSwitch, portDone,
 	input wire [2:0] opcode, // top 3 bits of instruction
 	// output signals
 	//    PC control
@@ -18,9 +10,9 @@ module decoder(
 	//    ALU control
 	output logic [2:0] ALUfunc,
 	// imm mux control
-	output logic imm, inSwitch,
+	output logic imm, switchControl, portStart,
 	//   register file control
-	output logic w, dispX2, dispY2
+	output logic w
 	//	1 for dst-src1-src2, 0 for dst-src
 	// output logic opType
 	);
@@ -33,8 +25,8 @@ module decoder(
 		// set default output signal values for NOP instruction
 		PCincr = 1'b1; // PC increments by default
 		ALUfunc = `RA;
-		imm=1'b0; w=1'b0; inSwitch=1'b0;
-		dispX2 = 0; dispY2 = 0;
+		imm=1'b0; w=1'b0; switchControl=1'b0;
+		portStart = 1'b0;
 		// opType = 0;
 
 		case(opcode)
@@ -46,13 +38,23 @@ module decoder(
 				// opType = 0;
 			end
 
-			`LDS: begin
-				PCincr = loadSwitch;
-				w = 1'b1;
-				ALUfunc = `RB;
-				imm = 1'b1;
-				inSwitch = 1'b1;
-				// opType = 0;
+			`LDP: begin
+				if (portDone == 0) begin
+
+					portStart = 1'b1;
+					ALUfunc = `RB;
+					PCincr = 1'b0;
+					switchControl = 1'b1;
+					imm = 1'b1;
+
+				end else begin
+
+					ALUfunc = `RB;
+					portStart = 1'b0;
+					switchControl = 1'b0;
+					PCincr = 1'b1;
+
+				end
 			end
 
 			`ADD: begin // register-register
@@ -81,19 +83,20 @@ module decoder(
 				// opType = 0;
 			end
 
-			`WAIT0: begin
-				w = 1'b0;
-				inSwitch = 1'b1;
-				dispY2 = 1;
-				PCincr = ~loadSwitch;
-			end
 
-			`WAIT1: begin
-				w = 1'b0;
-				inSwitch = 1'b1;
-				dispX2 = 1;
-				PCincr = loadSwitch;
-			end
+			// `WAIT0: begin
+			// 	w = 1'b0;
+			// 	inSwitch = 1'b1;
+			// 	dispY2 = 1;
+			// 	PCincr = ~loadSwitch;
+			// end
+
+			// `WAIT1: begin
+			// 	w = 1'b0;
+			// 	inSwitch = 1'b1;
+			// 	dispX2 = 1;
+			// 	PCincr = loadSwitch;
+			// end
 
 			default:
 				$error("unimplemented opcode %h",opcode);

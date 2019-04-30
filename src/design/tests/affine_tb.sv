@@ -14,13 +14,13 @@ module affine_tb;
 		#5  forever #5 clk = ~clk;
 	end
 
-    cpu     #(.n(n)) CPU01 (.*);
+    cpu #(.n(n)) CPU01 (.*);
 
     initial begin
         loadSwitch = 0;
         dataSwitch = 8'b00000000;
         reset = 1;
-        #10
+        #40
         reset = 0;
 
         #20

@@ -1,16 +1,3 @@
-//-----------------------------------------------------
-// File Name   : alu.sv
-// Function    : ALU module for picoMIPS
-// Version: 1,  only 8 funcs
-// Author:  tjk
-// Last rev. 23 Oct 12
-//-----------------------------------------------------
-
-// V = flags[3] = overflow
-// N = flags[2] = negative
-// Z = flags[1] = zero
-// C = flags[0] = carry on msb
-
 `include "alucodes.sv"
 module alu #(parameter n =8) (
 	input wire signed [n-1:0] a, b, // ALU operands
@@ -23,19 +10,10 @@ module alu #(parameter n =8) (
 	// and then build the ALU around the adder
 	logic[n-1:0] ar,b1; // temp signals
 
-	// always_comb
-	// begin
-	// 	if(func==`RSUB)
-	// 		b1 = b;
-	// 		ar = a+b1; // n-bit adder
-	// end // always_comb
-
 	assign ar = a + b;
 
-	// Generic 8-to-16-bit signed multiplier
-	// logic signed [((2*n)-1):0] mr;
+	// Create 8-to-16-bit signed multiplier
 	wire [((2*n)-1):0] mr;
-	// assign mr = a * b;
 	signed_mult MUL0 (
 		.a(a),
 		.b(b),
@@ -58,7 +36,7 @@ module alu #(parameter n =8) (
 			end
 
 			`RMUL	: begin
-				result = mr[((n*2)-2):(n-1)];
+				result = mr[((n-1)*2):(n-1)];
 			end
 
 			default	: result = a;

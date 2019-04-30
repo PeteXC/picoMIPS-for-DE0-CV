@@ -1,10 +1,3 @@
-//-----------------------------------------------------
-// File Name : pc.sv
-// Function : picoMIPS Program Counter
-// functions: increment, absolute and relative branches
-// Author: tjk
-// Last rev. 24 Oct 2012
-//-----------------------------------------------------
 module pc #(parameter Psize = 5) // up to 32 instructions in total
 	(input logic clk, reset, PCincr,
 	output logic [Psize-1 : 0]PCout
