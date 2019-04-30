@@ -9,7 +9,7 @@ module ROM #(parameter Psize = 5, Isize = 14) // psize - address width, Isize - 
 
 	// get memory contents from file
 	initial begin
-		$readmemh("affine.hex", memory);
+		$readmemh("affine2.hex", memory);
 	end
 	// program memory read
 	always_comb begin

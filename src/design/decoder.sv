@@ -10,9 +10,9 @@ module decoder(
 	//    ALU control
 	output logic [2:0] ALUfunc,
 	// imm mux control
-	output logic imm, inSwitch, portStart,
+	output logic imm, switchControl, portStart,
 	//   register file control
-	output logic w, w_Control, dispX2, dispY2
+	output logic w
 	//	1 for dst-src1-src2, 0 for dst-src
 	// output logic opType
 	);
@@ -25,9 +25,7 @@ module decoder(
 		// set default output signal values for NOP instruction
 		PCincr = 1'b1; // PC increments by default
 		ALUfunc = `RA;
-		imm=1'b0; w=1'b0; inSwitch=1'b0;
-		dispX2 = 1'b0; dispY2 = 1'b0;
-		w_Control = 1'b0;
+		imm=1'b0; w=1'b0; switchControl=1'b0;
 		portStart = 1'b0;
 		// opType = 0;
 
@@ -44,16 +42,16 @@ module decoder(
 				if (portDone == 0) begin
 
 					portStart = 1'b1;
-					w_Control = 1'b1;
 					ALUfunc = `RB;
 					PCincr = 1'b0;
-					inSwitch = 1'b1;
+					switchControl = 1'b1;
 					imm = 1'b1;
 
 				end else begin
 
+					ALUfunc = `RB;
 					portStart = 1'b0;
-					w_Control = 1'b0;
+					switchControl = 1'b0;
 					PCincr = 1'b1;
 
 				end
@@ -85,19 +83,20 @@ module decoder(
 				// opType = 0;
 			end
 
-			`WAIT0: begin
-				w = 1'b0;
-				inSwitch = 1'b1;
-				dispY2 = 1;
-				PCincr = ~loadSwitch;
-			end
 
-			`WAIT1: begin
-				w = 1'b0;
-				inSwitch = 1'b1;
-				dispX2 = 1;
-				PCincr = loadSwitch;
-			end
+			// `WAIT0: begin
+			// 	w = 1'b0;
+			// 	inSwitch = 1'b1;
+			// 	dispY2 = 1;
+			// 	PCincr = ~loadSwitch;
+			// end
+
+			// `WAIT1: begin
+			// 	w = 1'b0;
+			// 	inSwitch = 1'b1;
+			// 	dispX2 = 1;
+			// 	PCincr = loadSwitch;
+			// end
 
 			default:
 				$error("unimplemented opcode %h",opcode);

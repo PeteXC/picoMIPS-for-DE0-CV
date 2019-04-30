@@ -24,21 +24,21 @@ module decoder_tb;
 
 	initial
 	begin
-		opcode = `WAIT1;
+		opcode = `LDP;
 		loadSwitch = 1'b0;
 		#20
 
 		loadSwitch = 1'b1;
-		opcode = `LDS;
-		#10
-
-		opcode = `WAIT0;
-		#10
-
-		loadSwitch = 1'b0;
-		opcode = `LDI;
 		#20
 
+		loadSwitch = 1'b0;
+		opcode = `LDP;
+		#20
+
+		loadSwitch = 1'b1;
+		#20
+
+		loadSwitch = 1'b0;
 		opcode = `ADD;
 		#20
 
