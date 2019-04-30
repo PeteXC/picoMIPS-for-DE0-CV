@@ -935,7 +935,7 @@ LEDR[4]                      : W17       : output : 3.3-V LVTTL       :         
 GND                          : W18       : gnd    :                   :         :           :                
 LEDR[5]                      : W19       : output : 3.3-V LVTTL       :         : 4A        : Y              
 LEDR[7]                      : W20       : output : 3.3-V LVTTL       :         : 5A        : Y              
-RESERVED_INPUT_WITH_WEAK_PULLUP : W21       :        :                   :         : 5A        :                
+LEDR[8]                      : W21       : output : 3.3-V LVTTL       :         : 5A        : Y              
 RESERVED_INPUT_WITH_WEAK_PULLUP : W22       :        :                   :         : 5A        :                
 VCCIO5A                      : W23       : power  :                   : 3.3V    : 5A        :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : W24       :        :                   :         : 5A        :                

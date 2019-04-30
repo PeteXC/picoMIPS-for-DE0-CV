@@ -6,33 +6,19 @@ module port(
     output logic w, portDone, dispX2, dispY2
     );
 
-    // always_comb begin
-    //     if (portStart == 0) begin
-    //         w = 0;
-    //         portDone = 0;
-    //         outData = 8'b00000000;
-    //     end else begin
-    //         if (loadSwitch == 0) begin
-
-    //         end else begin
-
-    //         end
-    //     end
-    // end
-
     logic thisState, lastState;
 
-    always_ff @(posedge clk, posedge portStart) begin
-
-        thisState <= loadSwitch;
-        dispX2 <= 0;
-        dispY2 <= 0;
+    always_ff @(posedge clk) begin
 
         if (portStart == 0) begin
             w <= 0;
             portDone <= 0;
             lastState <= thisState;
         end else begin
+
+            thisState <= loadSwitch;
+            dispX2 <= 0;
+            dispY2 <= 0;
 
             case(thisState)
 
