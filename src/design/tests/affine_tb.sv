@@ -14,7 +14,7 @@ module affine_tb;
 		#5  forever #5 clk = ~clk;
 	end
 
-    cpu     #(.n(n)) CPU01 (.*);
+    cpu #(.n(n)) CPU01 (.*);
 
     initial begin
         loadSwitch = 0;

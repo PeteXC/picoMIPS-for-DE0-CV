@@ -40,11 +40,11 @@
 					"strict" : false
 				},
 				{
-					"name" : "reset",
+					"name" : "SW[8]",
 					"strict" : false
 				},
 				{
-					"name" : "SW[8]",
+					"name" : "reset",
 					"strict" : false
 				},
 				{

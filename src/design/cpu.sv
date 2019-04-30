@@ -25,7 +25,7 @@ module cpu #( parameter n = 8) // data bus width
 	wire [Psize-1 : 0]ProgAddress;
 
 	// ROM
-	parameter Isize = n+6; // Isize - instruction width
+	parameter Isize = n+4; // Isize - instruction width
 	wire [Isize:0] I; // I - instruction code
 
 	// Decoder
@@ -61,9 +61,9 @@ module cpu #( parameter n = 8) // data bus width
 		.clk(clk),
 		.w(w),
 		.Wdata(Wdata),
-		.srcAddr1(I[Isize-7:Isize-10]),  // reg %d number
-		.srcAddr2(I[Isize-11:0]),
-		.dstAddr(I[Isize-3:Isize-6]), // reg %s number
+		.srcAddr1(I[Isize-5:Isize-8]),  // reg %d number
+		.srcAddr2(I[Isize-9:0]),
+		.dstAddr(I[Isize-3:Isize-4]), // reg %s number
 		.srcData1(Rdata1),
 		.srcData2(Rdata2),
 		.dstData(Rdata3),
