@@ -20,7 +20,7 @@ module affine_tb;
         loadSwitch = 0;
         dataSwitch = 8'b00000000;
         reset = 1;
-        #10
+        #40
         reset = 0;
 
         #20

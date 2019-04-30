@@ -5,11 +5,11 @@ module ROM #(parameter Psize = 5, Isize = 14) // psize - address width, Isize - 
 	// program memory declaration, note: 1<<n is same as 2^n
 //	logic [Isize:0] memory[ (1<<Psize)-1:0];
 	// Program memory - only have as many as needed
-	logic [Isize:0] memory [17:0];
+	logic [Isize:0] memory [12:0];
 
 	// get memory contents from file
 	initial begin
-		$readmemh("affine.hex", memory);
+		$readmemh("affine2.hex", memory);
 	end
 	// program memory read
 	always_comb begin

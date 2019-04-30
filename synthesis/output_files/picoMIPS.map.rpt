@@ -1,5 +1,5 @@
 Analysis & Synthesis report for picoMIPS
-Tue Apr 30 14:56:36 2019
+Tue Apr 30 23:20:58 2019
 Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
 
 
@@ -14,17 +14,17 @@ Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
   8. Analysis & Synthesis DSP Block Usage Summary
-  9. General Register Statistics
- 10. Multiplexer Restructuring Statistics (Restructuring Performed)
- 11. Parameter Settings for User Entity Instance: counter:c
- 12. Parameter Settings for User Entity Instance: cpu:CPU01
- 13. Parameter Settings for User Entity Instance: cpu:CPU01|pc:PRC0
- 14. Parameter Settings for User Entity Instance: cpu:CPU01|ROM:ROM0
- 15. Parameter Settings for User Entity Instance: cpu:CPU01|registers:GPR0
- 16. Parameter Settings for User Entity Instance: cpu:CPU01|alu:ALU0
- 17. Port Connectivity Checks: "cpu:CPU01|alu:ALU0|signed_mult:MUL0"
- 18. Port Connectivity Checks: "cpu:CPU01|registers:GPR0"
- 19. Port Connectivity Checks: "cpu:CPU01|decoder:DCR0"
+  9. Registers Removed During Synthesis
+ 10. General Register Statistics
+ 11. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 12. Parameter Settings for User Entity Instance: counter:c
+ 13. Parameter Settings for User Entity Instance: cpu:CPU01
+ 14. Parameter Settings for User Entity Instance: cpu:CPU01|pc:PRC0
+ 15. Parameter Settings for User Entity Instance: cpu:CPU01|ROM:ROM0
+ 16. Parameter Settings for User Entity Instance: cpu:CPU01|registers:GPR0
+ 17. Parameter Settings for User Entity Instance: cpu:CPU01|alu:ALU0
+ 18. Port Connectivity Checks: "cpu:CPU01|alu:ALU0|signed_mult:MUL0"
+ 19. Port Connectivity Checks: "cpu:CPU01|port:PRT0"
  20. Post-Synthesis Netlist Statistics for Top Partition
  21. Elapsed Time Per Partition
  22. Analysis & Synthesis Messages
@@ -55,14 +55,14 @@ agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Tue Apr 30 14:56:36 2019       ;
+; Analysis & Synthesis Status     ; Successful - Tue Apr 30 23:20:58 2019       ;
 ; Quartus Prime Version           ; 16.1.0 Build 196 10/24/2016 SJ Lite Edition ;
 ; Revision Name                   ; picoMIPS                                    ;
 ; Top-level Entity Name           ; picoMIPS4test                               ;
 ; Family                          ; Cyclone V                                   ;
 ; Logic utilization (in ALMs)     ; N/A                                         ;
-; Total registers                 ; 61                                          ;
-; Total pins                      ; 19                                          ;
+; Total registers                 ; 65                                          ;
+; Total pins                      ; 20                                          ;
 ; Total virtual pins              ; 0                                           ;
 ; Total block memory bits         ; 0                                           ;
 ; Total DSP Blocks                ; 1                                           ;
@@ -184,7 +184,8 @@ agreement for further details.
 +----------------------------------+-----------------+---------------------------------------+--------------------------------------------------------------------+---------+
 ; File Name with User-Entered Path ; Used in Netlist ; File Type                             ; File Name with Absolute Path                                       ; Library ;
 +----------------------------------+-----------------+---------------------------------------+--------------------------------------------------------------------+---------+
-; ../src/design/affine.hex         ; yes             ; User Hexadecimal (Intel-Format) File  ; C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/affine.hex       ;         ;
+; ../src/design/affine2.hex        ; yes             ; User Hexadecimal (Intel-Format) File  ; C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/affine2.hex      ;         ;
+; ../src/design/port.sv            ; yes             ; User SystemVerilog HDL File           ; C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/port.sv          ;         ;
 ; ../src/design/signed_mult.sv     ; yes             ; User SystemVerilog HDL File           ; C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/signed_mult.sv   ;         ;
 ; ../src/design/ROM.sv             ; yes             ; User SystemVerilog HDL File           ; C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/ROM.sv           ;         ;
 ; ../src/design/registers.sv       ; yes             ; User SystemVerilog HDL File           ; C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/registers.sv     ;         ;
@@ -199,31 +200,31 @@ agreement for further details.
 +----------------------------------+-----------------+---------------------------------------+--------------------------------------------------------------------+---------+
 
 
-+---------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary                               ;
-+---------------------------------------------+-----------------------------+
-; Resource                                    ; Usage                       ;
-+---------------------------------------------+-----------------------------+
-; Estimate of Logic utilization (ALMs needed) ; 70                          ;
-;                                             ;                             ;
-; Combinational ALUT usage for logic          ; 105                         ;
-;     -- 7 input functions                    ; 0                           ;
-;     -- 6 input functions                    ; 31                          ;
-;     -- 5 input functions                    ; 22                          ;
-;     -- 4 input functions                    ; 24                          ;
-;     -- <=3 input functions                  ; 28                          ;
-;                                             ;                             ;
-; Dedicated logic registers                   ; 61                          ;
-;                                             ;                             ;
-; I/O pins                                    ; 19                          ;
-;                                             ;                             ;
-; Total DSP Blocks                            ; 1                           ;
-;                                             ;                             ;
-; Maximum fan-out node                        ; cpu:CPU01|ROM:ROM0|memory~2 ;
-; Maximum fan-out                             ; 39                          ;
-; Total fan-out                               ; 659                         ;
-; Average fan-out                             ; 3.21                        ;
-+---------------------------------------------+-----------------------------+
++-------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                       ;
++---------------------------------------------+---------------------+
+; Resource                                    ; Usage               ;
++---------------------------------------------+---------------------+
+; Estimate of Logic utilization (ALMs needed) ; 65                  ;
+;                                             ;                     ;
+; Combinational ALUT usage for logic          ; 110                 ;
+;     -- 7 input functions                    ; 0                   ;
+;     -- 6 input functions                    ; 16                  ;
+;     -- 5 input functions                    ; 27                  ;
+;     -- 4 input functions                    ; 19                  ;
+;     -- <=3 input functions                  ; 48                  ;
+;                                             ;                     ;
+; Dedicated logic registers                   ; 65                  ;
+;                                             ;                     ;
+; I/O pins                                    ; 20                  ;
+;                                             ;                     ;
+; Total DSP Blocks                            ; 1                   ;
+;                                             ;                     ;
+; Maximum fan-out node                        ; counter:c|count[23] ;
+; Maximum fan-out                             ; 43                  ;
+; Total fan-out                               ; 641                 ;
+; Average fan-out                             ; 2.97                ;
++---------------------------------------------+---------------------+
 
 
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -231,14 +232,15 @@ agreement for further details.
 +-----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------+---------------+--------------+
 ; Compilation Hierarchy Node  ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                ; Entity Name   ; Library Name ;
 +-----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------+---------------+--------------+
-; |picoMIPS4test              ; 105 (0)             ; 61 (0)                    ; 0                 ; 1          ; 19   ; 0            ; |picoMIPS4test                                     ; picoMIPS4test ; work         ;
+; |picoMIPS4test              ; 110 (0)             ; 65 (0)                    ; 0                 ; 1          ; 20   ; 0            ; |picoMIPS4test                                     ; picoMIPS4test ; work         ;
 ;    |counter:c|              ; 24 (24)             ; 24 (24)                   ; 0                 ; 0          ; 0    ; 0            ; |picoMIPS4test|counter:c                           ; counter       ; work         ;
-;    |cpu:CPU01|              ; 81 (42)             ; 37 (0)                    ; 0                 ; 1          ; 0    ; 0            ; |picoMIPS4test|cpu:CPU01                           ; cpu           ; work         ;
-;       |ROM:ROM0|            ; 12 (12)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |picoMIPS4test|cpu:CPU01|ROM:ROM0                  ; ROM           ; work         ;
+;    |cpu:CPU01|              ; 86 (44)             ; 41 (0)                    ; 0                 ; 1          ; 0    ; 0            ; |picoMIPS4test|cpu:CPU01                           ; cpu           ; work         ;
+;       |ROM:ROM0|            ; 11 (11)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |picoMIPS4test|cpu:CPU01|ROM:ROM0                  ; ROM           ; work         ;
 ;       |alu:ALU0|            ; 16 (16)             ; 0 (0)                     ; 0                 ; 1          ; 0    ; 0            ; |picoMIPS4test|cpu:CPU01|alu:ALU0                  ; alu           ; work         ;
 ;          |signed_mult:MUL0| ; 0 (0)               ; 0 (0)                     ; 0                 ; 1          ; 0    ; 0            ; |picoMIPS4test|cpu:CPU01|alu:ALU0|signed_mult:MUL0 ; signed_mult   ; work         ;
-;       |decoder:DCR0|        ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |picoMIPS4test|cpu:CPU01|decoder:DCR0              ; decoder       ; work         ;
-;       |pc:PRC0|             ; 6 (6)               ; 5 (5)                     ; 0                 ; 0          ; 0    ; 0            ; |picoMIPS4test|cpu:CPU01|pc:PRC0                   ; pc            ; work         ;
+;       |decoder:DCR0|        ; 2 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |picoMIPS4test|cpu:CPU01|decoder:DCR0              ; decoder       ; work         ;
+;       |pc:PRC0|             ; 4 (4)               ; 4 (4)                     ; 0                 ; 0          ; 0    ; 0            ; |picoMIPS4test|cpu:CPU01|pc:PRC0                   ; pc            ; work         ;
+;       |port:PRT0|           ; 5 (5)               ; 5 (5)                     ; 0                 ; 0          ; 0    ; 0            ; |picoMIPS4test|cpu:CPU01|port:PRT0                 ; port          ; work         ;
 ;       |registers:GPR0|      ; 4 (4)               ; 32 (32)                   ; 0                 ; 0          ; 0    ; 0            ; |picoMIPS4test|cpu:CPU01|registers:GPR0            ; registers     ; work         ;
 +-----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------+---------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
@@ -256,30 +258,41 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +-------------------------------+--------------+
 
 
++------------------------------------------------------------+
+; Registers Removed During Synthesis                         ;
++---------------------------------------+--------------------+
+; Register name                         ; Reason for Removal ;
++---------------------------------------+--------------------+
+; cpu:CPU01|pc:PRC0|PCout[4]            ; Lost fanout        ;
+; Total Number of Removed Registers = 1 ;                    ;
++---------------------------------------+--------------------+
+
+
 +------------------------------------------------------+
 ; General Register Statistics                          ;
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 61    ;
+; Total registers                              ; 65    ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 5     ;
+; Number of registers using Asynchronous Clear ; 4     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
 ; Number of registers using Clock Enable       ; 32    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                       ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output             ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------+
-; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |picoMIPS4test|cpu:CPU01|alu:ALU0|Mux7 ;
-; 6:1                ; 8 bits    ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |picoMIPS4test|cpu:CPU01|AluB[7]       ;
-; 8:1                ; 8 bits    ; 40 LEs        ; 16 LEs               ; 24 LEs                 ; No         ; |picoMIPS4test|cpu:CPU01|AluA[5]       ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                            ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                  ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------+
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |picoMIPS4test|cpu:CPU01|port:PRT0|portDone ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |picoMIPS4test|cpu:CPU01|alu:ALU0|Mux7      ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; No         ; |picoMIPS4test|cpu:CPU01|AluB[7]            ;
+; 8:1                ; 8 bits    ; 40 LEs        ; 16 LEs               ; 24 LEs                 ; No         ; |picoMIPS4test|cpu:CPU01|AluA[3]            ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------+
 
 
 +--------------------------------------------------------+
@@ -353,18 +366,8 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------+--------+----------+-------------------------------------------------------------------------------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "cpu:CPU01|registers:GPR0"                                                                                                                                                           ;
-+----------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port     ; Type  ; Severity ; Details                                                                                                                                                                          ;
-+----------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; srcAddr1 ; Input ; Warning  ; Input port expression (4 bits) is wider than the input port (2 bits) it drives.  The 2 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
-; srcAddr2 ; Input ; Warning  ; Input port expression (4 bits) is wider than the input port (2 bits) it drives.  The 2 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
-+----------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-
-
 +------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "cpu:CPU01|decoder:DCR0"                                                               ;
+; Port Connectivity Checks: "cpu:CPU01|port:PRT0"                                                                  ;
 +--------+--------+----------+-------------------------------------------------------------------------------------+
 ; Port   ; Type   ; Severity ; Details                                                                             ;
 +--------+--------+----------+-------------------------------------------------------------------------------------+
@@ -377,27 +380,27 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_ff             ; 61                          ;
-;     CLR               ; 5                           ;
+; arriav_ff             ; 65                          ;
+;     CLR               ; 4                           ;
 ;     ENA               ; 32                          ;
-;     plain             ; 24                          ;
-; arriav_lcell_comb     ; 105                         ;
+;     plain             ; 29                          ;
+; arriav_lcell_comb     ; 110                         ;
 ;     arith             ; 31                          ;
 ;         1 data inputs ; 22                          ;
 ;         2 data inputs ; 1                           ;
-;         4 data inputs ; 8                           ;
-;     normal            ; 74                          ;
+;         5 data inputs ; 8                           ;
+;     normal            ; 79                          ;
 ;         1 data inputs ; 1                           ;
-;         2 data inputs ; 1                           ;
-;         3 data inputs ; 3                           ;
-;         4 data inputs ; 16                          ;
-;         5 data inputs ; 22                          ;
-;         6 data inputs ; 31                          ;
+;         2 data inputs ; 3                           ;
+;         3 data inputs ; 21                          ;
+;         4 data inputs ; 19                          ;
+;         5 data inputs ; 19                          ;
+;         6 data inputs ; 16                          ;
 ; arriav_mac            ; 1                           ;
-; boundary_port         ; 19                          ;
+; boundary_port         ; 20                          ;
 ;                       ;                             ;
 ; Max LUT depth         ; 5.70                        ;
-; Average LUT depth     ; 3.48                        ;
+; Average LUT depth     ; 3.38                        ;
 +-----------------------+-----------------------------+
 
 
@@ -416,10 +419,12 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
-    Info: Processing started: Tue Apr 30 14:56:21 2019
+    Info: Processing started: Tue Apr 30 23:20:40 2019
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off picoMIPS -c picoMIPS
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file /users/peter/home/projects/sv/ep-cwk/src/design/port.sv
+    Info (12023): Found entity 1: port File: C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/port.sv Line: 3
 Info (12021): Found 1 design units, including 1 entities, in source file /users/peter/home/projects/sv/ep-cwk/src/design/signed_mult.sv
     Info (12023): Found entity 1: signed_mult File: C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/signed_mult.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file /users/peter/home/projects/sv/ep-cwk/src/design/rom.sv
@@ -446,51 +451,47 @@ Info (12127): Elaborating entity "picoMIPS4test" for the top level hierarchy
 Info (12128): Elaborating entity "counter" for hierarchy "counter:c" File: C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/picoMIPS4test.sv Line: 10
 Warning (10230): Verilog HDL assignment warning at counter.sv(11): truncated value with size 32 to match size of target (24) File: C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/counter.sv Line: 11
 Info (12128): Elaborating entity "cpu" for hierarchy "cpu:CPU01" File: C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/picoMIPS4test.sv Line: 15
-Info (12128): Elaborating entity "pc" for hierarchy "cpu:CPU01|pc:PRC0" File: C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/cpu.sv Line: 41
-Info (12128): Elaborating entity "ROM" for hierarchy "cpu:CPU01|ROM:ROM0" File: C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/cpu.sv Line: 46
-Warning (10230): Verilog HDL assignment warning at affine.hex(6): truncated value with size 16 to match size of target (13) File: C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/affine.hex Line: 6
-Warning (10230): Verilog HDL assignment warning at affine.hex(7): truncated value with size 16 to match size of target (13) File: C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/affine.hex Line: 7
-Warning (10230): Verilog HDL assignment warning at affine.hex(8): truncated value with size 16 to match size of target (13) File: C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/affine.hex Line: 8
-Warning (10230): Verilog HDL assignment warning at affine.hex(9): truncated value with size 16 to match size of target (13) File: C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/affine.hex Line: 9
-Warning (10230): Verilog HDL assignment warning at affine.hex(10): truncated value with size 16 to match size of target (13) File: C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/affine.hex Line: 10
-Warning (10230): Verilog HDL assignment warning at affine.hex(11): truncated value with size 16 to match size of target (13) File: C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/affine.hex Line: 11
-Warning (10230): Verilog HDL assignment warning at affine.hex(12): truncated value with size 16 to match size of target (13) File: C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/affine.hex Line: 12
-Warning (10230): Verilog HDL assignment warning at affine.hex(13): truncated value with size 16 to match size of target (13) File: C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/affine.hex Line: 13
-Warning (10230): Verilog HDL assignment warning at affine.hex(14): truncated value with size 16 to match size of target (13) File: C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/affine.hex Line: 14
-Warning (10230): Verilog HDL assignment warning at affine.hex(15): truncated value with size 16 to match size of target (13) File: C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/affine.hex Line: 15
-Warning (10230): Verilog HDL assignment warning at affine.hex(16): truncated value with size 16 to match size of target (13) File: C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/affine.hex Line: 16
-Warning (10230): Verilog HDL assignment warning at affine.hex(17): truncated value with size 16 to match size of target (13) File: C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/affine.hex Line: 17
-Warning (10230): Verilog HDL assignment warning at affine.hex(18): truncated value with size 16 to match size of target (13) File: C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/affine.hex Line: 18
-Warning (10230): Verilog HDL assignment warning at affine.hex(19): truncated value with size 16 to match size of target (13) File: C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/affine.hex Line: 19
-Warning (10230): Verilog HDL assignment warning at affine.hex(20): truncated value with size 16 to match size of target (13) File: C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/affine.hex Line: 20
-Warning (10230): Verilog HDL assignment warning at affine.hex(21): truncated value with size 16 to match size of target (13) File: C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/affine.hex Line: 21
-Warning (10230): Verilog HDL assignment warning at affine.hex(22): truncated value with size 16 to match size of target (13) File: C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/affine.hex Line: 22
-Warning (10230): Verilog HDL assignment warning at affine.hex(23): truncated value with size 16 to match size of target (13) File: C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/affine.hex Line: 23
+Info (12128): Elaborating entity "pc" for hierarchy "cpu:CPU01|pc:PRC0" File: C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/cpu.sv Line: 44
+Info (12128): Elaborating entity "ROM" for hierarchy "cpu:CPU01|ROM:ROM0" File: C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/cpu.sv Line: 49
+Warning (10230): Verilog HDL assignment warning at affine2.hex(6): truncated value with size 16 to match size of target (13) File: C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/affine2.hex Line: 6
+Warning (10230): Verilog HDL assignment warning at affine2.hex(7): truncated value with size 16 to match size of target (13) File: C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/affine2.hex Line: 7
+Warning (10230): Verilog HDL assignment warning at affine2.hex(8): truncated value with size 16 to match size of target (13) File: C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/affine2.hex Line: 8
+Warning (10230): Verilog HDL assignment warning at affine2.hex(9): truncated value with size 16 to match size of target (13) File: C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/affine2.hex Line: 9
+Warning (10230): Verilog HDL assignment warning at affine2.hex(10): truncated value with size 16 to match size of target (13) File: C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/affine2.hex Line: 10
+Warning (10230): Verilog HDL assignment warning at affine2.hex(11): truncated value with size 16 to match size of target (13) File: C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/affine2.hex Line: 11
+Warning (10230): Verilog HDL assignment warning at affine2.hex(12): truncated value with size 16 to match size of target (13) File: C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/affine2.hex Line: 12
+Warning (10230): Verilog HDL assignment warning at affine2.hex(13): truncated value with size 16 to match size of target (13) File: C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/affine2.hex Line: 13
+Warning (10230): Verilog HDL assignment warning at affine2.hex(14): truncated value with size 16 to match size of target (13) File: C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/affine2.hex Line: 14
+Warning (10230): Verilog HDL assignment warning at affine2.hex(15): truncated value with size 16 to match size of target (13) File: C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/affine2.hex Line: 15
+Warning (10230): Verilog HDL assignment warning at affine2.hex(16): truncated value with size 16 to match size of target (13) File: C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/affine2.hex Line: 16
+Warning (10230): Verilog HDL assignment warning at affine2.hex(17): truncated value with size 16 to match size of target (13) File: C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/affine2.hex Line: 17
+Warning (10230): Verilog HDL assignment warning at affine2.hex(18): truncated value with size 16 to match size of target (13) File: C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/affine2.hex Line: 18
 Warning (10030): Net "memory.data_a" at ROM.sv(8) has no driver or initial value, using a default initial value '0' File: C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/ROM.sv Line: 8
 Warning (10030): Net "memory.waddr_a" at ROM.sv(8) has no driver or initial value, using a default initial value '0' File: C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/ROM.sv Line: 8
 Warning (10030): Net "memory.we_a" at ROM.sv(8) has no driver or initial value, using a default initial value '0' File: C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/ROM.sv Line: 8
-Info (12128): Elaborating entity "decoder" for hierarchy "cpu:CPU01|decoder:DCR0" File: C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/cpu.sv Line: 57
-Info (12128): Elaborating entity "registers" for hierarchy "cpu:CPU01|registers:GPR0" File: C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/cpu.sv Line: 71
-Info (12128): Elaborating entity "alu" for hierarchy "cpu:CPU01|alu:ALU0" File: C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/cpu.sv Line: 78
+Info (12128): Elaborating entity "decoder" for hierarchy "cpu:CPU01|decoder:DCR0" File: C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/cpu.sv Line: 60
+Info (12128): Elaborating entity "port" for hierarchy "cpu:CPU01|port:PRT0" File: C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/cpu.sv Line: 70
+Info (12128): Elaborating entity "registers" for hierarchy "cpu:CPU01|registers:GPR0" File: C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/cpu.sv Line: 84
+Info (12128): Elaborating entity "alu" for hierarchy "cpu:CPU01|alu:ALU0" File: C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/cpu.sv Line: 91
 Info (12128): Elaborating entity "signed_mult" for hierarchy "cpu:CPU01|alu:ALU0|signed_mult:MUL0" File: C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/alu.sv Line: 20
 Info (276014): Found 1 instances of uninferred RAM logic
     Info (276004): RAM logic "cpu:CPU01|ROM:ROM0|memory" is uninferred due to inappropriate RAM size File: C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/ROM.sv Line: 8
-Critical Warning (127005): Memory depth (32) in the design file differs from memory depth (18) in the Memory Initialization File "C:/Users/Peter/Home/Projects/SV/EP-cwk/synthesis/db/picoMIPS.ram0_ROM_c1a0773f.hdl.mif" -- setting initial value for remaining addresses to 0
-Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Critical Warning (127005): Memory depth (16) in the design file differs from memory depth (13) in the Memory Initialization File "C:/Users/Peter/Home/Projects/SV/EP-cwk/synthesis/db/picoMIPS.ram0_ROM_c1a0773f.hdl.mif" -- setting initial value for remaining addresses to 0
 Info (286030): Timing-Driven Synthesis is running
+Info (17049): 1 registers lost all their fanouts during netlist optimizations.
 Info (144001): Generated suppressed messages file C:/Users/Peter/Home/Projects/SV/EP-cwk/synthesis/output_files/picoMIPS.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 157 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 164 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 11 input pins
-    Info (21059): Implemented 8 output pins
-    Info (21061): Implemented 137 logic cells
+    Info (21059): Implemented 9 output pins
+    Info (21061): Implemented 143 logic cells
     Info (21062): Implemented 1 DSP elements
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 27 warnings
-    Info: Peak virtual memory: 4851 megabytes
-    Info: Processing ended: Tue Apr 30 14:56:36 2019
-    Info: Elapsed time: 00:00:15
-    Info: Total CPU time (on all processors): 00:00:31
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 21 warnings
+    Info: Peak virtual memory: 4852 megabytes
+    Info: Processing ended: Tue Apr 30 23:20:58 2019
+    Info: Elapsed time: 00:00:18
+    Info: Total CPU time (on all processors): 00:00:40
 
 
 +------------------------------------------+

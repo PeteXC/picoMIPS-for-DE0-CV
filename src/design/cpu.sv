@@ -29,7 +29,10 @@ module cpu #( parameter n = 8) // data bus width
 	wire [Isize:0] I; // I - instruction code
 
 	// Decoder
-	wire dispX2, dispY2, inSwitch;
+	wire dispX2, dispY2, switchControl, wDCR;
+
+	// Port
+	wire portStart, portDone, wPRT;
 
 	//------------- code starts here ---------
 	// module instantiations
@@ -47,12 +50,22 @@ module cpu #( parameter n = 8) // data bus width
 
 	decoder DCR0 (
 		.loadSwitch(loadSwitch),
+		.portDone(portDone),
 		.opcode(I[Isize:Isize-2]),
 		.PCincr(PCincr),
 		.ALUfunc(ALUfunc),
 		.imm(imm),
-		.w(w),
-		.inSwitch(inSwitch),
+		.w(wDCR),
+		.switchControl(switchControl),
+		.portStart(portStart) );
+
+	port PRT0 (
+		.portStart(portStart),
+		.loadSwitch(loadSwitch),
+		.clk(clk),
+		.dataSwitch(dataSwitch),
+		.w(wPRT),
+		.portDone(portDone),
 		.dispX2(dispX2),
 		.dispY2(dispY2) );
 
@@ -78,14 +91,12 @@ module cpu #( parameter n = 8) // data bus width
 		.result(Wdata) ); // ALU result -> destination reg
 
 	// create MUX for immediate operand
-	assign AluB = (inSwitch ? dataSwitch : (imm ? I[n-1:0] : Rdata2));
+	assign AluB = (switchControl ? dataSwitch : (imm ? I[n-1:0] : Rdata2));
 
 	assign AluA = (imm ? Rdata3 : Rdata1);
 	// this will take the lowest 8 bits of the instruction bus i.e. take the second operand as is
 
-
-	// connect answer result registers to outport
-	// assign outport = (dispX2 ? ());
+	assign w = (switchControl ? wPRT : wDCR);
 
 	always_comb begin
 		if (dispX2 == 1) begin

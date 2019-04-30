@@ -10,14 +10,15 @@ SW[5] => SW[5].IN1
 SW[6] => SW[6].IN1
 SW[7] => SW[7].IN1
 SW[8] => SW[8].IN1
-LEDR[0] << cpu:CPU01.outport
-LEDR[1] << cpu:CPU01.outport
-LEDR[2] << cpu:CPU01.outport
-LEDR[3] << cpu:CPU01.outport
-LEDR[4] << cpu:CPU01.outport
-LEDR[5] << cpu:CPU01.outport
-LEDR[6] << cpu:CPU01.outport
-LEDR[7] << cpu:CPU01.outport
+LEDR[0] <= cpu:CPU01.outport
+LEDR[1] <= cpu:CPU01.outport
+LEDR[2] <= cpu:CPU01.outport
+LEDR[3] <= cpu:CPU01.outport
+LEDR[4] <= cpu:CPU01.outport
+LEDR[5] <= cpu:CPU01.outport
+LEDR[6] <= cpu:CPU01.outport
+LEDR[7] <= cpu:CPU01.outport
+LEDR[8] <= clk.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |picoMIPS4test|counter:c
@@ -49,17 +50,17 @@ clk <= count[23].DB_MAX_OUTPUT_PORT_TYPE
 
 
 |picoMIPS4test|cpu:CPU01
-clk => clk.IN2
+clk => clk.IN3
 reset => reset.IN1
-loadSwitch => loadSwitch.IN1
-dataSwitch[0] => AluB.DATAB
-dataSwitch[1] => AluB.DATAB
-dataSwitch[2] => AluB.DATAB
-dataSwitch[3] => AluB.DATAB
-dataSwitch[4] => AluB.DATAB
-dataSwitch[5] => AluB.DATAB
-dataSwitch[6] => AluB.DATAB
-dataSwitch[7] => AluB.DATAB
+loadSwitch => loadSwitch.IN2
+dataSwitch[0] => dataSwitch[0].IN1
+dataSwitch[1] => dataSwitch[1].IN1
+dataSwitch[2] => dataSwitch[2].IN1
+dataSwitch[3] => dataSwitch[3].IN1
+dataSwitch[4] => dataSwitch[4].IN1
+dataSwitch[5] => dataSwitch[5].IN1
+dataSwitch[6] => dataSwitch[6].IN1
+dataSwitch[7] => dataSwitch[7].IN1
 outport[0] <= outport.DB_MAX_OUTPUT_PORT_TYPE
 outport[1] <= outport.DB_MAX_OUTPUT_PORT_TYPE
 outport[2] <= outport.DB_MAX_OUTPUT_PORT_TYPE
@@ -98,7 +99,7 @@ address[0] => memory.RADDR
 address[1] => memory.RADDR1
 address[2] => memory.RADDR2
 address[3] => memory.RADDR3
-address[4] => memory.RADDR4
+address[4] => ~NO_FANOUT~
 I[0] <= memory.DATAOUT
 I[1] <= memory.DATAOUT1
 I[2] <= memory.DATAOUT2
@@ -115,11 +116,13 @@ I[12] <= memory.DATAOUT12
 
 
 |picoMIPS4test|cpu:CPU01|decoder:DCR0
-loadSwitch => Mux0.IN6
-loadSwitch => Mux0.IN7
-loadSwitch => Mux0.IN5
+loadSwitch => ~NO_FANOUT~
+portDone => PCincr.DATAB
+portDone => portStart.DATAB
+portDone => switchControl.DATAB
+portDone => Mux0.IN7
 opcode[0] => Mux0.IN10
-opcode[0] => Decoder0.IN2
+opcode[0] => Decoder1.IN2
 opcode[1] => Mux0.IN9
 opcode[1] => Decoder0.IN1
 opcode[1] => Decoder1.IN1
@@ -127,15 +130,42 @@ opcode[1] => ALUfunc[0].DATAIN
 opcode[2] => Mux0.IN8
 opcode[2] => Decoder0.IN0
 opcode[2] => Decoder1.IN0
-PCincr <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
+PCincr <= PCincr.DB_MAX_OUTPUT_PORT_TYPE
 ALUfunc[0] <= opcode[1].DB_MAX_OUTPUT_PORT_TYPE
 ALUfunc[1] <= ALUfunc.DB_MAX_OUTPUT_PORT_TYPE
 ALUfunc[2] <= <GND>
-imm <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
-inSwitch <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
-w <= w.DB_MAX_OUTPUT_PORT_TYPE
-dispX2 <= Decoder0.DB_MAX_OUTPUT_PORT_TYPE
-dispY2 <= Decoder0.DB_MAX_OUTPUT_PORT_TYPE
+imm <= Mux0.DB_MAX_OUTPUT_PORT_TYPE
+switchControl <= switchControl.DB_MAX_OUTPUT_PORT_TYPE
+portStart <= portStart.DB_MAX_OUTPUT_PORT_TYPE
+w <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|picoMIPS4test|cpu:CPU01|port:PRT0
+portStart => w.OUTPUTSELECT
+portStart => portDone.OUTPUTSELECT
+portStart => lastState.OUTPUTSELECT
+portStart => dispY2~reg0.ENA
+portStart => dispX2~reg0.ENA
+portStart => thisState.ENA
+loadSwitch => thisState.DATAIN
+clk => dispY2~reg0.CLK
+clk => dispX2~reg0.CLK
+clk => thisState.CLK
+clk => lastState.CLK
+clk => portDone~reg0.CLK
+clk => w~reg0.CLK
+dataSwitch[0] => ~NO_FANOUT~
+dataSwitch[1] => ~NO_FANOUT~
+dataSwitch[2] => ~NO_FANOUT~
+dataSwitch[3] => ~NO_FANOUT~
+dataSwitch[4] => ~NO_FANOUT~
+dataSwitch[5] => ~NO_FANOUT~
+dataSwitch[6] => ~NO_FANOUT~
+dataSwitch[7] => ~NO_FANOUT~
+w <= w~reg0.DB_MAX_OUTPUT_PORT_TYPE
+portDone <= portDone~reg0.DB_MAX_OUTPUT_PORT_TYPE
+dispX2 <= dispX2~reg0.DB_MAX_OUTPUT_PORT_TYPE
+dispY2 <= dispY2~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |picoMIPS4test|cpu:CPU01|registers:GPR0
@@ -251,6 +281,8 @@ srcAddr1[1] => Mux4.IN0
 srcAddr1[1] => Mux5.IN0
 srcAddr1[1] => Mux6.IN0
 srcAddr1[1] => Mux7.IN0
+srcAddr1[2] => ~NO_FANOUT~
+srcAddr1[3] => ~NO_FANOUT~
 srcAddr2[0] => Mux8.IN1
 srcAddr2[0] => Mux9.IN1
 srcAddr2[0] => Mux10.IN1
@@ -267,6 +299,8 @@ srcAddr2[1] => Mux12.IN0
 srcAddr2[1] => Mux13.IN0
 srcAddr2[1] => Mux14.IN0
 srcAddr2[1] => Mux15.IN0
+srcAddr2[2] => ~NO_FANOUT~
+srcAddr2[3] => ~NO_FANOUT~
 dstAddr[0] => Decoder0.IN1
 dstAddr[0] => Mux16.IN1
 dstAddr[0] => Mux17.IN1
