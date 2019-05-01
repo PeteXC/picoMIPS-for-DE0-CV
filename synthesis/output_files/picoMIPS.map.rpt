@@ -1,5 +1,5 @@
 Analysis & Synthesis report for picoMIPS
-Tue Apr 30 23:20:58 2019
+Wed May 01 20:15:06 2019
 Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
 
 
@@ -55,7 +55,7 @@ agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Tue Apr 30 23:20:58 2019       ;
+; Analysis & Synthesis Status     ; Successful - Wed May 01 20:15:06 2019       ;
 ; Quartus Prime Version           ; 16.1.0 Build 196 10/24/2016 SJ Lite Edition ;
 ; Revision Name                   ; picoMIPS                                    ;
 ; Top-level Entity Name           ; picoMIPS4test                               ;
@@ -207,12 +207,12 @@ agreement for further details.
 +---------------------------------------------+---------------------+
 ; Estimate of Logic utilization (ALMs needed) ; 65                  ;
 ;                                             ;                     ;
-; Combinational ALUT usage for logic          ; 110                 ;
+; Combinational ALUT usage for logic          ; 109                 ;
 ;     -- 7 input functions                    ; 0                   ;
 ;     -- 6 input functions                    ; 16                  ;
 ;     -- 5 input functions                    ; 27                  ;
 ;     -- 4 input functions                    ; 19                  ;
-;     -- <=3 input functions                  ; 48                  ;
+;     -- <=3 input functions                  ; 47                  ;
 ;                                             ;                     ;
 ; Dedicated logic registers                   ; 65                  ;
 ;                                             ;                     ;
@@ -222,7 +222,7 @@ agreement for further details.
 ;                                             ;                     ;
 ; Maximum fan-out node                        ; counter:c|count[23] ;
 ; Maximum fan-out                             ; 43                  ;
-; Total fan-out                               ; 641                 ;
+; Total fan-out                               ; 638                 ;
 ; Average fan-out                             ; 2.97                ;
 +---------------------------------------------+---------------------+
 
@@ -232,15 +232,15 @@ agreement for further details.
 +-----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------+---------------+--------------+
 ; Compilation Hierarchy Node  ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                ; Entity Name   ; Library Name ;
 +-----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------+---------------+--------------+
-; |picoMIPS4test              ; 110 (0)             ; 65 (0)                    ; 0                 ; 1          ; 20   ; 0            ; |picoMIPS4test                                     ; picoMIPS4test ; work         ;
+; |picoMIPS4test              ; 109 (0)             ; 65 (0)                    ; 0                 ; 1          ; 20   ; 0            ; |picoMIPS4test                                     ; picoMIPS4test ; work         ;
 ;    |counter:c|              ; 24 (24)             ; 24 (24)                   ; 0                 ; 0          ; 0    ; 0            ; |picoMIPS4test|counter:c                           ; counter       ; work         ;
-;    |cpu:CPU01|              ; 86 (44)             ; 41 (0)                    ; 0                 ; 1          ; 0    ; 0            ; |picoMIPS4test|cpu:CPU01                           ; cpu           ; work         ;
+;    |cpu:CPU01|              ; 85 (44)             ; 41 (0)                    ; 0                 ; 1          ; 0    ; 0            ; |picoMIPS4test|cpu:CPU01                           ; cpu           ; work         ;
 ;       |ROM:ROM0|            ; 11 (11)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |picoMIPS4test|cpu:CPU01|ROM:ROM0                  ; ROM           ; work         ;
 ;       |alu:ALU0|            ; 16 (16)             ; 0 (0)                     ; 0                 ; 1          ; 0    ; 0            ; |picoMIPS4test|cpu:CPU01|alu:ALU0                  ; alu           ; work         ;
 ;          |signed_mult:MUL0| ; 0 (0)               ; 0 (0)                     ; 0                 ; 1          ; 0    ; 0            ; |picoMIPS4test|cpu:CPU01|alu:ALU0|signed_mult:MUL0 ; signed_mult   ; work         ;
 ;       |decoder:DCR0|        ; 2 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |picoMIPS4test|cpu:CPU01|decoder:DCR0              ; decoder       ; work         ;
 ;       |pc:PRC0|             ; 4 (4)               ; 4 (4)                     ; 0                 ; 0          ; 0    ; 0            ; |picoMIPS4test|cpu:CPU01|pc:PRC0                   ; pc            ; work         ;
-;       |port:PRT0|           ; 5 (5)               ; 5 (5)                     ; 0                 ; 0          ; 0    ; 0            ; |picoMIPS4test|cpu:CPU01|port:PRT0                 ; port          ; work         ;
+;       |port:PRT0|           ; 4 (4)               ; 5 (5)                     ; 0                 ; 0          ; 0    ; 0            ; |picoMIPS4test|cpu:CPU01|port:PRT0                 ; port          ; work         ;
 ;       |registers:GPR0|      ; 4 (4)               ; 32 (32)                   ; 0                 ; 0          ; 0    ; 0            ; |picoMIPS4test|cpu:CPU01|registers:GPR0            ; registers     ; work         ;
 +-----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------+---------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
@@ -384,15 +384,15 @@ Note: In order to hide this table in the UI and the text report file, please set
 ;     CLR               ; 4                           ;
 ;     ENA               ; 32                          ;
 ;     plain             ; 29                          ;
-; arriav_lcell_comb     ; 110                         ;
+; arriav_lcell_comb     ; 109                         ;
 ;     arith             ; 31                          ;
 ;         1 data inputs ; 22                          ;
 ;         2 data inputs ; 1                           ;
 ;         5 data inputs ; 8                           ;
-;     normal            ; 79                          ;
+;     normal            ; 78                          ;
 ;         1 data inputs ; 1                           ;
 ;         2 data inputs ; 3                           ;
-;         3 data inputs ; 21                          ;
+;         3 data inputs ; 20                          ;
 ;         4 data inputs ; 19                          ;
 ;         5 data inputs ; 19                          ;
 ;         6 data inputs ; 16                          ;
@@ -409,7 +409,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:01     ;
+; Top            ; 00:00:00     ;
 +----------------+--------------+
 
 
@@ -419,7 +419,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
-    Info: Processing started: Tue Apr 30 23:20:40 2019
+    Info: Processing started: Wed May 01 20:14:54 2019
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off picoMIPS -c picoMIPS
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -488,10 +488,10 @@ Info (21057): Implemented 164 device resources after synthesis - the final resou
     Info (21061): Implemented 143 logic cells
     Info (21062): Implemented 1 DSP elements
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 21 warnings
-    Info: Peak virtual memory: 4852 megabytes
-    Info: Processing ended: Tue Apr 30 23:20:58 2019
-    Info: Elapsed time: 00:00:18
-    Info: Total CPU time (on all processors): 00:00:40
+    Info: Peak virtual memory: 4850 megabytes
+    Info: Processing ended: Wed May 01 20:15:06 2019
+    Info: Elapsed time: 00:00:12
+    Info: Total CPU time (on all processors): 00:00:27
 
 
 +------------------------------------------+

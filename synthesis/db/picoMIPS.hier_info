@@ -10,15 +10,15 @@ SW[5] => SW[5].IN1
 SW[6] => SW[6].IN1
 SW[7] => SW[7].IN1
 SW[8] => SW[8].IN1
-LEDR[0] <= cpu:CPU01.outport
-LEDR[1] <= cpu:CPU01.outport
-LEDR[2] <= cpu:CPU01.outport
-LEDR[3] <= cpu:CPU01.outport
-LEDR[4] <= cpu:CPU01.outport
-LEDR[5] <= cpu:CPU01.outport
-LEDR[6] <= cpu:CPU01.outport
-LEDR[7] <= cpu:CPU01.outport
-LEDR[8] <= clk.DB_MAX_OUTPUT_PORT_TYPE
+LEDR[0] << cpu:CPU01.outport
+LEDR[1] << cpu:CPU01.outport
+LEDR[2] << cpu:CPU01.outport
+LEDR[3] << cpu:CPU01.outport
+LEDR[4] << cpu:CPU01.outport
+LEDR[5] << cpu:CPU01.outport
+LEDR[6] << cpu:CPU01.outport
+LEDR[7] << cpu:CPU01.outport
+LEDR[8] << clk.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |picoMIPS4test|counter:c
@@ -146,12 +146,11 @@ portStart => portDone.OUTPUTSELECT
 portStart => lastState.OUTPUTSELECT
 portStart => dispY2~reg0.ENA
 portStart => dispX2~reg0.ENA
-portStart => thisState.ENA
 loadSwitch => thisState.DATAIN
 clk => dispY2~reg0.CLK
 clk => dispX2~reg0.CLK
-clk => thisState.CLK
 clk => lastState.CLK
+clk => thisState.CLK
 clk => portDone~reg0.CLK
 clk => w~reg0.CLK
 dataSwitch[0] => ~NO_FANOUT~

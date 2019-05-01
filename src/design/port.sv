@@ -13,6 +13,7 @@ module port(
         if (portStart == 0) begin
             w <= 0;
             portDone <= 0;
+            thisState <= loadSwitch;
             lastState <= thisState;
         end else begin
 
