@@ -1,5 +1,5 @@
 Analysis & Synthesis report for picoMIPS
-Wed May 01 20:15:06 2019
+Thu May 02 11:37:10 2019
 Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
 
 
@@ -24,11 +24,10 @@ Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
  16. Parameter Settings for User Entity Instance: cpu:CPU01|registers:GPR0
  17. Parameter Settings for User Entity Instance: cpu:CPU01|alu:ALU0
  18. Port Connectivity Checks: "cpu:CPU01|alu:ALU0|signed_mult:MUL0"
- 19. Port Connectivity Checks: "cpu:CPU01|port:PRT0"
- 20. Post-Synthesis Netlist Statistics for Top Partition
- 21. Elapsed Time Per Partition
- 22. Analysis & Synthesis Messages
- 23. Analysis & Synthesis Suppressed Messages
+ 19. Post-Synthesis Netlist Statistics for Top Partition
+ 20. Elapsed Time Per Partition
+ 21. Analysis & Synthesis Messages
+ 22. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -55,13 +54,13 @@ agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Wed May 01 20:15:06 2019       ;
+; Analysis & Synthesis Status     ; Successful - Thu May 02 11:37:10 2019       ;
 ; Quartus Prime Version           ; 16.1.0 Build 196 10/24/2016 SJ Lite Edition ;
 ; Revision Name                   ; picoMIPS                                    ;
 ; Top-level Entity Name           ; picoMIPS4test                               ;
 ; Family                          ; Cyclone V                                   ;
 ; Logic utilization (in ALMs)     ; N/A                                         ;
-; Total registers                 ; 65                                          ;
+; Total registers                 ; 63                                          ;
 ; Total pins                      ; 20                                          ;
 ; Total virtual pins              ; 0                                           ;
 ; Total block memory bits         ; 0                                           ;
@@ -205,25 +204,25 @@ agreement for further details.
 +---------------------------------------------+---------------------+
 ; Resource                                    ; Usage               ;
 +---------------------------------------------+---------------------+
-; Estimate of Logic utilization (ALMs needed) ; 65                  ;
+; Estimate of Logic utilization (ALMs needed) ; 64                  ;
 ;                                             ;                     ;
-; Combinational ALUT usage for logic          ; 109                 ;
+; Combinational ALUT usage for logic          ; 108                 ;
 ;     -- 7 input functions                    ; 0                   ;
 ;     -- 6 input functions                    ; 16                  ;
 ;     -- 5 input functions                    ; 27                  ;
 ;     -- 4 input functions                    ; 19                  ;
-;     -- <=3 input functions                  ; 47                  ;
+;     -- <=3 input functions                  ; 46                  ;
 ;                                             ;                     ;
-; Dedicated logic registers                   ; 65                  ;
+; Dedicated logic registers                   ; 63                  ;
 ;                                             ;                     ;
 ; I/O pins                                    ; 20                  ;
 ;                                             ;                     ;
 ; Total DSP Blocks                            ; 1                   ;
 ;                                             ;                     ;
 ; Maximum fan-out node                        ; counter:c|count[23] ;
-; Maximum fan-out                             ; 43                  ;
-; Total fan-out                               ; 638                 ;
-; Average fan-out                             ; 2.97                ;
+; Maximum fan-out                             ; 41                  ;
+; Total fan-out                               ; 631                 ;
+; Average fan-out                             ; 2.98                ;
 +---------------------------------------------+---------------------+
 
 
@@ -232,15 +231,15 @@ agreement for further details.
 +-----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------+---------------+--------------+
 ; Compilation Hierarchy Node  ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                ; Entity Name   ; Library Name ;
 +-----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------+---------------+--------------+
-; |picoMIPS4test              ; 109 (0)             ; 65 (0)                    ; 0                 ; 1          ; 20   ; 0            ; |picoMIPS4test                                     ; picoMIPS4test ; work         ;
+; |picoMIPS4test              ; 108 (0)             ; 63 (0)                    ; 0                 ; 1          ; 20   ; 0            ; |picoMIPS4test                                     ; picoMIPS4test ; work         ;
 ;    |counter:c|              ; 24 (24)             ; 24 (24)                   ; 0                 ; 0          ; 0    ; 0            ; |picoMIPS4test|counter:c                           ; counter       ; work         ;
-;    |cpu:CPU01|              ; 85 (44)             ; 41 (0)                    ; 0                 ; 1          ; 0    ; 0            ; |picoMIPS4test|cpu:CPU01                           ; cpu           ; work         ;
+;    |cpu:CPU01|              ; 84 (44)             ; 39 (0)                    ; 0                 ; 1          ; 0    ; 0            ; |picoMIPS4test|cpu:CPU01                           ; cpu           ; work         ;
 ;       |ROM:ROM0|            ; 11 (11)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |picoMIPS4test|cpu:CPU01|ROM:ROM0                  ; ROM           ; work         ;
 ;       |alu:ALU0|            ; 16 (16)             ; 0 (0)                     ; 0                 ; 1          ; 0    ; 0            ; |picoMIPS4test|cpu:CPU01|alu:ALU0                  ; alu           ; work         ;
 ;          |signed_mult:MUL0| ; 0 (0)               ; 0 (0)                     ; 0                 ; 1          ; 0    ; 0            ; |picoMIPS4test|cpu:CPU01|alu:ALU0|signed_mult:MUL0 ; signed_mult   ; work         ;
 ;       |decoder:DCR0|        ; 2 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |picoMIPS4test|cpu:CPU01|decoder:DCR0              ; decoder       ; work         ;
 ;       |pc:PRC0|             ; 4 (4)               ; 4 (4)                     ; 0                 ; 0          ; 0    ; 0            ; |picoMIPS4test|cpu:CPU01|pc:PRC0                   ; pc            ; work         ;
-;       |port:PRT0|           ; 4 (4)               ; 5 (5)                     ; 0                 ; 0          ; 0    ; 0            ; |picoMIPS4test|cpu:CPU01|port:PRT0                 ; port          ; work         ;
+;       |port:PRT0|           ; 3 (3)               ; 3 (3)                     ; 0                 ; 0          ; 0    ; 0            ; |picoMIPS4test|cpu:CPU01|port:PRT0                 ; port          ; work         ;
 ;       |registers:GPR0|      ; 4 (4)               ; 32 (32)                   ; 0                 ; 0          ; 0    ; 0            ; |picoMIPS4test|cpu:CPU01|registers:GPR0            ; registers     ; work         ;
 +-----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------+---------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
@@ -273,7 +272,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 65    ;
+; Total registers                              ; 63    ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 4     ;
@@ -366,33 +365,24 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------+--------+----------+-------------------------------------------------------------------------------------+
 
 
-+------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "cpu:CPU01|port:PRT0"                                                                  ;
-+--------+--------+----------+-------------------------------------------------------------------------------------+
-; Port   ; Type   ; Severity ; Details                                                                             ;
-+--------+--------+----------+-------------------------------------------------------------------------------------+
-; dispY2 ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+--------+--------+----------+-------------------------------------------------------------------------------------+
-
-
 +-----------------------------------------------------+
 ; Post-Synthesis Netlist Statistics for Top Partition ;
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_ff             ; 65                          ;
+; arriav_ff             ; 63                          ;
 ;     CLR               ; 4                           ;
 ;     ENA               ; 32                          ;
-;     plain             ; 29                          ;
-; arriav_lcell_comb     ; 109                         ;
+;     plain             ; 27                          ;
+; arriav_lcell_comb     ; 108                         ;
 ;     arith             ; 31                          ;
 ;         1 data inputs ; 22                          ;
 ;         2 data inputs ; 1                           ;
 ;         5 data inputs ; 8                           ;
-;     normal            ; 78                          ;
+;     normal            ; 77                          ;
 ;         1 data inputs ; 1                           ;
 ;         2 data inputs ; 3                           ;
-;         3 data inputs ; 20                          ;
+;         3 data inputs ; 19                          ;
 ;         4 data inputs ; 19                          ;
 ;         5 data inputs ; 19                          ;
 ;         6 data inputs ; 16                          ;
@@ -400,7 +390,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; boundary_port         ; 20                          ;
 ;                       ;                             ;
 ; Max LUT depth         ; 5.70                        ;
-; Average LUT depth     ; 3.38                        ;
+; Average LUT depth     ; 3.41                        ;
 +-----------------------+-----------------------------+
 
 
@@ -419,7 +409,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
-    Info: Processing started: Wed May 01 20:14:54 2019
+    Info: Processing started: Thu May 02 11:36:58 2019
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off picoMIPS -c picoMIPS
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -470,9 +460,9 @@ Warning (10030): Net "memory.data_a" at ROM.sv(8) has no driver or initial value
 Warning (10030): Net "memory.waddr_a" at ROM.sv(8) has no driver or initial value, using a default initial value '0' File: C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/ROM.sv Line: 8
 Warning (10030): Net "memory.we_a" at ROM.sv(8) has no driver or initial value, using a default initial value '0' File: C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/ROM.sv Line: 8
 Info (12128): Elaborating entity "decoder" for hierarchy "cpu:CPU01|decoder:DCR0" File: C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/cpu.sv Line: 60
-Info (12128): Elaborating entity "port" for hierarchy "cpu:CPU01|port:PRT0" File: C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/cpu.sv Line: 70
-Info (12128): Elaborating entity "registers" for hierarchy "cpu:CPU01|registers:GPR0" File: C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/cpu.sv Line: 84
-Info (12128): Elaborating entity "alu" for hierarchy "cpu:CPU01|alu:ALU0" File: C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/cpu.sv Line: 91
+Info (12128): Elaborating entity "port" for hierarchy "cpu:CPU01|port:PRT0" File: C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/cpu.sv Line: 67
+Info (12128): Elaborating entity "registers" for hierarchy "cpu:CPU01|registers:GPR0" File: C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/cpu.sv Line: 81
+Info (12128): Elaborating entity "alu" for hierarchy "cpu:CPU01|alu:ALU0" File: C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/cpu.sv Line: 88
 Info (12128): Elaborating entity "signed_mult" for hierarchy "cpu:CPU01|alu:ALU0|signed_mult:MUL0" File: C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/alu.sv Line: 20
 Info (276014): Found 1 instances of uninferred RAM logic
     Info (276004): RAM logic "cpu:CPU01|ROM:ROM0|memory" is uninferred due to inappropriate RAM size File: C:/Users/Peter/Home/Projects/SV/EP-cwk/src/design/ROM.sv Line: 8
@@ -482,16 +472,16 @@ Info (17049): 1 registers lost all their fanouts during netlist optimizations.
 Info (144001): Generated suppressed messages file C:/Users/Peter/Home/Projects/SV/EP-cwk/synthesis/output_files/picoMIPS.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 164 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 162 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 11 input pins
     Info (21059): Implemented 9 output pins
-    Info (21061): Implemented 143 logic cells
+    Info (21061): Implemented 141 logic cells
     Info (21062): Implemented 1 DSP elements
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 21 warnings
-    Info: Peak virtual memory: 4850 megabytes
-    Info: Processing ended: Wed May 01 20:15:06 2019
+    Info: Peak virtual memory: 4851 megabytes
+    Info: Processing ended: Thu May 02 11:37:10 2019
     Info: Elapsed time: 00:00:12
-    Info: Total CPU time (on all processors): 00:00:27
+    Info: Total CPU time (on all processors): 00:00:25
 
 
 +------------------------------------------+

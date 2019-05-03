@@ -1,10 +1,10 @@
-Analysis & Synthesis Status : Successful - Wed May 01 20:15:06 2019
+Analysis & Synthesis Status : Successful - Thu May 02 11:37:10 2019
 Quartus Prime Version : 16.1.0 Build 196 10/24/2016 SJ Lite Edition
 Revision Name : picoMIPS
 Top-level Entity Name : picoMIPS4test
 Family : Cyclone V
 Logic utilization (in ALMs) : N/A
-Total registers : 65
+Total registers : 63
 Total pins : 20
 Total virtual pins : 0
 Total block memory bits : 0
